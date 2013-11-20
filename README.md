@@ -26,6 +26,16 @@ By: Nico and Smith
 - BOOTSTRAP
 - DEVISE/OMNIAUTH
 
-# THINGS TO DO
+# THINGS TO DO for Weds
 - CREATE NAME: MOVIEPOP
 - SET UP GITHUB REPO  WITH CORRENT PERMISSIONS
+- Create a rails project
+- Set up API after reading documentation
+- Wireframe
+- Modeling (2)
+- Schema 'n shit
+- RESTful routing
+- Add bootstrapping
+
+
+
