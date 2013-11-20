@@ -3,12 +3,11 @@ moviepop
 
 simple movie to-do and rating app
 
-
 By: Nico and Smith
 
 ========
 
-# ""MOVIES TO WATCH LIST" APP
+# MOVIES TO WATCH APP
 - SEARCH FOR MOVIES
 - CREATE FAVS
 - YOU CAN RATE IT
@@ -27,15 +26,16 @@ By: Nico and Smith
 - DEVISE/OMNIAUTH
 
 # THINGS TO DO for Weds
-- CREATE NAME: MOVIEPOP
-- SET UP GITHUB REPO  WITH CORRENT PERMISSIONS
-- Create a rails project
+- *CREATE NAME: MOVIEPOP --OK*
+- *SET UP GITHUB REPO  WITH CORRENT PERMISSIONS --OK*
+- *Create a rails project --OK*
 - Set up API after reading documentation
-- Wireframe
+- *Wireframe --OK*
+- *User flow --OK*
 - Modeling (2)
 - Schema 'n shit
 - RESTful routing
-- Add bootstrapping
+- *Add bootstrapping --OK*
 
 
 
