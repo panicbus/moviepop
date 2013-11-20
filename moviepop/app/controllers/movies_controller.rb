@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
       "http://www.omdbapi.com",
       :params => { :s => params[:movie_title] }
     )
-    @results = JSON.parse(movies.body)["Search"]
+    @result = JSON.parse(movies.body)["Search"]
     # if @results == nil
     #   redirect_to not_found_path
     # end

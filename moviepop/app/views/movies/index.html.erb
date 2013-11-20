@@ -5,3 +5,11 @@
   <input type="text" placeholder="Search" name="movie_title">
   <input type="submit">
 </form>
+
+<hr>
+
+<% if @results.present? %>
+  nothing searched
+<% else %>
+  <%= @result.inspect %>
+<% end %>
