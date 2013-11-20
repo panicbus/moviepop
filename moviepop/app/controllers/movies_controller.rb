@@ -2,16 +2,40 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user, except: [:index, :show]
 
   def index
-    movie_title = params[:movie_title]
+    @movies = Movie.all
+    @movie = Movie.new
+    @search = params[:smith]
+    respond_to do |format|
+      format.html
+      format.json { render :json => @movies }
+    end
+  end
 
-    movies = Typhoeus.get(
+
+  def search
+    @search = params[:smith]
+    @movie = Typhoeus.get(
       "http://www.omdbapi.com",
-      :params => { :s => params[:movie_title] }
-    )
-    @result = JSON.parse(movies.body)["Search"]
-    # if @results == nil
-    #   redirect_to not_found_path
-    # end
+      :params => { :s => params[:smith] }
+      )
+    @mapped_movies = @movie.map do |mov|
+      {
+        :movie => movie
+        # :name => mov[:user][:name],
+        # :screename => mov[:user][:screen_name],
+        # # :timezone => mov[:user][:time_zone],
+        # :text => mov[:text]
+      }
+    end
+    render :json => @mapped_movies
+  end
+
+  def create
+    @movie = Movie.create(params[:movie])
+     respond_to do |format|
+         format.js
+         # This will create the new item via a post request but it will respond with JavaScript
+     end
   end
 
 end

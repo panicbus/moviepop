@@ -1,15 +1,53 @@
 <h1>MoviePop!</h1>
 <h3>Search Movies</h3>
 
-<form method="get" action="/movies">
-  <input type="text" placeholder="Search" name="movie_title">
-  <input type="submit">
-</form>
 
-<hr>
-
-<% if @results.present? %>
-  nothing searched
-<% else %>
-  <%= @result.inspect %>
+<!-- OUR FORM TO SEARCH SHIT -->
+<%= form_for @movie, :remote => true do |m| %>
+  <%= m.text_field :search, placeholder: "i.e. The Matrix", id: "search_movies" %>
+  <%= m.submit "Search"%><br><br>
 <% end %>
+</div>
+<!-- //////// CREATE MODEL "MOVIE" WITH COLUMN SEARCH:STRING -->
+
+
+<!-- OUR DIV TO DISPLAY OUR SEARCHED STUFF -->
+<div class="blocks">
+<b><p>Results</p></b><hr>
+<div id="movies_results"></div>
+</div>
+
+
+<!-- AJAX REQUEST -->
+<script type="text/javascript">
+  // start of the jQuery ready function and makes sure page is loaded and ready
+  $(function() {
+    // alert("test");
+
+    // 1. prevent default action of the form (prevent it from going to the search method in the controller)
+    $('form').on('submit', function(event) {
+      event.preventDefault();
+      // 2. capture the params of the form
+      var query = $('#search_movies').val();
+      // 3. do a "GET" request to sent the params to get info
+      var get_request = $.ajax({
+        url: "../search",
+        type: "get",
+        data: {smith: query}
+      }); //end of AJAX request
+
+      $('#movies_results').empty();
+
+      get_request.done(function(data) {
+        for (var i = 0; i < data.length; i++) {
+          var item = "test"
+          $("#movies_results").append(item);
+        }
+      });
+
+      $('#search_movies').empty();
+    });
+
+  });
+</script>
+
