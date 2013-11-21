@@ -8,8 +8,10 @@
     // 1. prevent default action of the form (prevent it from going to the search method in the controller)
     $('form').on('submit', function(event) {
       event.preventDefault();
+
       // 2. capture the params of the form
       var query = $('#search_movies').val();
+
       // 3. do a "GET" request to sent the params to get info
       var get_request = $.ajax({
         url: "http://www.omdbapi.com/?s=" + query,
@@ -21,36 +23,54 @@
       $('#movies_results').empty();
       $('#search_movies').val("");
 
+      // 5. loop to get movie title and id#
       get_request.done(function(data) {
         var item = data["Search"]
         // var poster = data["Poster"]
         for (var i = 0; i < item.length ; i++) {
           // console.log(item[i])
-          idNumber = item[i]['imdbID']
-          $("#movies_results").append("<li id=" + item[i]['imdbID'] + ">" + item[i]["Title"] + " (" + item[i]["imdbID"] + ")</li>");
-          $('li').css('cursor', 'pointer');
-          $('li[id]').on("click", function(){
-            $('#movies_results').empty();
-            $('#movies_results').append(idNumber)
-
-
-            // var get_request = $.ajax({
-            //   url: "http://www.omdbapi.com/?i=" + "Star",
-            //   dataType: "json",
-            //   type: "get",
-            // }).done(function(){
-            //   alert("test")
-            // });
-
-          })
+          var idNumber = item[i]['imdbID']
+          $("#movies_results").append("<li id=" + item[i]['imdbID'] + " class='movie'>" + item[i]["Title"] + " (" + item[i]["imdbID"] + ")</li>");
+        $('li').css('cursor', 'pointer');
         }
-      });
-    });
-  });
+      })
+    })
+
+          $("#movies_results").on("click",'li.movie', function() {
+          var id = $(this).attr('id');
+
+          // 6. second ajax request to
+          var get_request_two = $.ajax({
+            url: "http://www.omdbapi.com/?i=" + id,
+            dataType: "json",
+            type: "get",
+          });
+            $('#movies_results').empty();
+            // 6.5. this empties and appends the movie id to the div
+            // $('#movies_results').append(id)
+            ///////////////
+            get_request_two.done(function(dataTwo) {
+              var item = dataTwo
+              $('#movies_results').append("<img src=" + item["Poster"] + ">");
+              console.log(item);
+            })
+            ///////////////
+          })
 
 
-        // $("#movies_results").append(
-        //   '<li><a href="/movies/">'+ item[i]["Title"] +
-        //   ' - ' + item[i]["Year"] +
-        //   ' (' + item[i]["imdbID"] + ')</a></li>');
+  })
+          // $('li').on("click", function(data){
+          //   // $('#movies_results').empty();
+          //   // $('#movies_results').append(idNumber)
 
+          //   // var get_request = $.ajax({
+          //   //   url: "http://www.omdbapi.com/?i=" + "Star",
+          //   //   dataType: "json",
+          //   //   type: "get",
+          //   // }).done(function(){
+          //   //   alert("test")
+          //   // });
+
+          // })
+
+// check out codedrop for design
