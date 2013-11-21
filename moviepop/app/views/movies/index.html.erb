@@ -3,9 +3,9 @@
 
 
 <!-- OUR FORM TO SEARCH SHIT -->
-<%= form_for @movie, :remote => true do |m| %>
+<%= form_for @movie do |m| %>
   <%= m.text_field :search, placeholder: "i.e. The Matrix", id: "search_movies" %>
-  <%= m.submit "Search"%><br><br>
+  <%= m.submit "Search" %><br><br>
 <% end %>
 </div>
 <!-- //////// CREATE MODEL "MOVIE" WITH COLUMN SEARCH:STRING -->
@@ -31,18 +31,18 @@
       var query = $('#search_movies').val();
       // 3. do a "GET" request to sent the params to get info
       var get_request = $.ajax({
-        url: "../search",
+        url: "http://www.omdbapi.com/?s=" + query,
         type: "get",
-        data: {smith: query}
       }); //end of AJAX request
 
       $('#movies_results').empty();
 
       get_request.done(function(data) {
-        for (var i = 0; i < data.length; i++) {
-          var item = "test"
+          for (var i = 0; i < data.length; i++) {
+            console.log(data["search"])
+          }
+          var item = data
           $("#movies_results").append(item);
-        }
       });
 
       $('#search_movies').empty();
