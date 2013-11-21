@@ -48,13 +48,15 @@
             $('#movies_results').empty();
             // 6.5. this empties and appends the movie id to the div
             // $('#movies_results').append(id)
-            ///////////////
+
+            // 7. this is DELEGATION
             get_request_two.done(function(dataTwo) {
               var item = dataTwo
-              $('#movies_results').append("<img src=" + item["Poster"] + ">");
+              var poster = "<img src=" + item["Poster"] + ">"
+              var plot = item["Plot"]
+              $('#movies_results').append(poster + "<br>" + "<div id='plot'>" + plot + "</div>");
               console.log(item);
             })
-            ///////////////
           })
 
 
