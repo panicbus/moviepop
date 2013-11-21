@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20131121032754) do
     t.string   "director"
     t.string   "writer"
     t.string   "actors"
+    t.integer  "imdbID"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

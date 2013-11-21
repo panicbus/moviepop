@@ -63,6 +63,15 @@
                                           + plot
                                           + "</div>");
               console.log(item);
+              $('#favorite').on('click', function(){
+
+              var favorites = $.ajax({
+                url: "/movies",
+                dataType: "json",
+                type: "POST",
+              });
+
+              })
             })
           })
 

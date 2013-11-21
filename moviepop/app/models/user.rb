@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   validates_presence_of :username
+
+  has_many :favorites
+  has_many :to_watchs
+
 end
