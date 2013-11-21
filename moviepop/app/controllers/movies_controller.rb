@@ -6,5 +6,4 @@ class MoviesController < ApplicationController
     @movie = Movie.new
   end
 
-
 end
