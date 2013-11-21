@@ -6,7 +6,7 @@
     // alert("test");
 
     // 1. prevent default action of the form (prevent it from going to the search method in the controller)
-    $('form').on('submit', function(event) {
+    $('#ackbarsearches').on('submit', function(event) {
       event.preventDefault();
 
       // 2. capture the params of the form
