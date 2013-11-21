@@ -20,8 +20,10 @@
       // 4. clear the div and the search box
       $('#movies_results').empty();
       $('#search_movies').val("");
+
       get_request.done(function(data) {
         var item = data["Search"]
+        var poster = data["Poster"]
         for (var i = 0; i < item.length ; i++) {
           console.log(item[i])
           $("#movies_results").append("<li>" + item[i]["Title"] + " (" + item[i]["imdbID"] + ")</li>");
@@ -33,3 +35,10 @@
       });
     });
   });
+
+
+        // $("#movies_results").append(
+        //   '<li><a href="/movies/">'+ item[i]["Title"] +
+        //   ' - ' + item[i]["Year"] +
+        //   ' (' + item[i]["imdbID"] + ')</a></li>');
+
