@@ -24,7 +24,11 @@
         var item = data["Search"]
         for (var i = 0; i < item.length ; i++) {
           console.log(item[i])
-          $("#movies_results").append("<p>"+ item[i]["Title"] + " (" + item[i]["imdbID"] + ")</p>");
+          $("#movies_results").append("<li>" + item[i]["Title"] + " (" + item[i]["imdbID"] + ")</li>");
+          $('li').on("click", function(){
+            $('#movies_results').empty();
+            $('#movies_results').append("test")
+          })
         }
       });
     });
