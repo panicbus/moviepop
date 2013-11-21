@@ -59,7 +59,6 @@
             })
           })
 
-
   })
           // $('li').on("click", function(data){
           //   // $('#movies_results').empty();
