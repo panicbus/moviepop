@@ -27,7 +27,7 @@
       var query = $('#search_movies').val();
       // 3. do a "GET" request to sent the params to get info
       var get_request = $.ajax({
-        url: "http://www.omdbapi.com/?r=JSON&s=" + query,
+        url: "http://www.omdbapi.com/?s=" + query,
         dataType: "json",
         type: "get",
       }); //end of AJAX request
@@ -38,10 +38,14 @@
           // for (var i = 0; i < data.length; i++) {
           // console.log(data["Search"])
           // }
-          var item = data
+          var item = data["Search"]
+          for (var i = 0; i < item.length ; i++) {
+            console.log(item[i])
+            $("#movies_results").append("<p>"+ item[i]["Title"] + "</p>");
+          }
+
           // debugger
-          console.log(item["Search"][0])
-          $("#movies_results").append(item["Search"][0]["Title"]);
+          // $("#movies_results").append(item[0]["Title"]);
       });
 
       $('#search_movies').empty();
