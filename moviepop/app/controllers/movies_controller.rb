@@ -32,7 +32,6 @@ class MoviesController < ApplicationController
   def favorite
     #movies = current_user.favorites
     movies = Favorite.where(user_id: current_user.id)
-    render json: movies
 
   end
 
