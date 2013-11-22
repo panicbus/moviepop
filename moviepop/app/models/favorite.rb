@@ -3,5 +3,5 @@ class Favorite < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :title, uniqueness: true
+  validates_uniqueness_of :title, :scope => :user_id
 end
