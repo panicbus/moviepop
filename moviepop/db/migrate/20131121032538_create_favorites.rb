@@ -11,7 +11,7 @@ class CreateFavorites < ActiveRecord::Migration
       t.string :director
       t.string :writer
       t.string :actors
-      t.integer :imdbID
+      t.string :imdbID
 
       t.timestamps
     end

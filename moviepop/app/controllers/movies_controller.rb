@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def create
+    @movie = Movie.new
     # binding.pry
     favorites = Favorite.create(
       # actors: params[:actors],
