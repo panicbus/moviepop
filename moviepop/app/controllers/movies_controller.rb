@@ -27,6 +27,9 @@ class MoviesController < ApplicationController
       imdbID: params[:imdbID],
       response: params[:Response]
     )
+    if @movie.save
+      flash[:message] = "Movie saved to your favorites!"
+    end
   end
 
   def favorite
