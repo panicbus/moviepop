@@ -3,7 +3,28 @@
 //= require_tree .
 
   $(function() {
-    // alert("test");
+    $('#see_favorites').on('click', function(){
+    $('#movies_results').empty();
+
+        $.getJSON("/favorite").done(function(favs){
+          // console.log(favs["current_fave_movie"][1])
+
+          var favMovies = favs["current_fave_movie"]
+          var favPoster = favs["current_fave_poster"]
+
+          for (var i = 0; i < favMovies.length; i++) {
+            for (var i = 0; i < favPoster.length; i++) {
+              $('#movies_results').append("<div id='favorites'>"
+                                          + favMovies[i]
+                                          + "<br><img src='"
+                                          + favPoster[i]
+                                          + "'></div>");
+            }
+          }
+        }) //end of loop
+
+      })
+
 
     // 1. prevent default action of the form (prevent it from going to the search method in the controller)
     $('#ackbarsearches').on('click', function(event) {
@@ -54,8 +75,7 @@
         var item = dataTwo
         var poster = "<img src=" + item["Poster"] + ">"
         var plot = item["Plot"]
-      $('#movies_results').append("<button id='favorite'>Favorite</button> "
-                                    + "<button id='see_favorites'>See Favorites</button><br>"
+      $('#movies_results').append("<button id='favorite'>Favorite This Movie</button> "
                                     + "<div class='poster'>"
                                     + poster
                                     + "</div>"
@@ -74,27 +94,7 @@
         });
 
         })
-    $('#see_favorites').on('click', function(){
-    $('#movies_results').empty();
 
-        $.getJSON("/favorite").done(function(favs){
-          // console.log(favs["current_fave_movie"][1])
-
-          var favMovies = favs["current_fave_movie"]
-          var favPoster = favs["current_fave_poster"]
-
-          for (var i = 0; i < favMovies.length; i++) {
-            for (var i = 0; i < favPoster.length; i++) {
-              $('#movies_results').append("<div id='favorites'>"
-                                          + favMovies[i]
-                                          + "<br><img src='"
-                                          + favPoster[i]
-                                          + "'></div>");
-            }
-          }
-        }) //end of loop
-
-      })
     }) // ends the see favorites block
 
       }) // ends the single movie show

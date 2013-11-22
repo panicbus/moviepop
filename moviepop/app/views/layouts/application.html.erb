@@ -12,23 +12,23 @@
     <div id="user_nav">
 
       <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.username %></strong>.
+        Logged in as <strong><%= current_user.username.capitalize %></strong>.
         <%= link_to 'Edit profile', edit_user_registration_path %> |
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to "Sign up", new_user_registration_path %> |
         <%= link_to "Login", new_user_session_path %>
       <% end %>
-<!--       <button id='see_favorites'>See Favorites</button> -->
-      <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
+
+    <button id='see_favorites'>See Favorites</button><br>
+
+      <p><%= notice %><%= alert %></p>
     </div>
 
   </div>
 </header>
 <body>
 <div id="container">
-
 <%= yield %>
 </div>
 </body>
