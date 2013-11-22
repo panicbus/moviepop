@@ -13,7 +13,6 @@
           console.log(favs)
           for (var i = 0; i < favs.length; i++) {
               $('#movies_results').append("<div id='" + favs[i]['id'] + "' class='favorites' >"
-                                          + favs[i]["title"]
                                           + "<br><img src='"
                                           + favs[i]["poster"]
                                           + "'>"
@@ -72,7 +71,7 @@
         for (var i = 0; i < item.length ; i++) {
           // console.log(item[i])
           var idNumber = item[i]['imdbID']
-          $("#movies_results").append("<li id=" + item[i]['imdbID'] + " class='movie'>" + item[i]["Title"] + "</li>");
+          $("#movies_results").append("<li id=" + item[i]['imdbID'] + " class='movie'>" + item[i]["Title"] + " - " + item[i]["Year"] + "</li>");
         $('li').css('cursor', 'pointer');
         }
       });
@@ -97,13 +96,27 @@
         var item = dataTwo
         var poster = "<img src=" + item["Poster"] + ">"
         var plot = item["Plot"]
-      $('#movies_results').append("<button id='favorite'>Favorite This Movie</button> "
-                                    + "<div class='poster'>"
+        var title = item["Title"]
+        var director = item["Director"]
+        var actors = item["Actors"]
+        var rated = item["Rated"]
+        var year = item["Year"]
+        var rating = item["imdbRating"]
+        var genre = item["Genre"]
+
+      $('#movies_results').append("<div class='poster'>"
                                     + poster
                                     + "</div>"
-                                    + "<br>"
-                                    + "<div id='plot'>"
-                                    + plot
+                                    + "<div class='plot'>"
+                                    + "<span class='searchedTitle'>" + title + "</span>"
+                                    + "<p>" + year + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                                    + "Rated: " + rated + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                                    + genre + "</p>"
+                                    + "<p>Director: " + director + "</p>"
+                                    + "<p>Starring: " + actors + "</p>"
+                                    + "<p>IMDB Rating: " + rating + "</p>"
+                                    + "<p>" + plot + "</p>"
+                                    + "<p><button id='favorite'>Favorite This Movie</button></p>"
                                     + "</div>");
 
         $('#favorite').on('click', function(){

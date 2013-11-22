@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 </head>
 <header>
 
@@ -15,7 +16,7 @@
         <!-- OUR FORM TO SEARCH SHIT -->
         <div id="search">
           <input id="search_movies" type="text" placeholder="i.e. The Matrix" class="search_bar"/>
-          <input type="Submit" id="ackbarsearches">    <button id='see_favorites'>See Favorites</button>
+          <button id="ackbarsearches">Search It!</button>    <button id='see_favorites'>See Favorites</button>
           <%= notice %><%= alert %>
         </div>
 
