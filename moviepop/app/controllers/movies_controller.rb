@@ -7,10 +7,10 @@ class MoviesController < ApplicationController
   end
 
   def create
+    userId = current_user.id
     @movie = Movie.new
-
     favorites = Favorite.create(
-      user_id: params[:user_id],
+      user_id: userId,
       title: params[:Title],
       year: params[:Year],
       rated: params[:Rated],
