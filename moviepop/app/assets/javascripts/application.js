@@ -99,7 +99,8 @@
               // console.log(item["current_fave_movie"][1])
               $('#movies_results').append(item['current_fave_movie']);
               $('#movies_results').append(item['current_fave_poster']);
-            }) // ends the get function
+              $('#movies_results').append("<button id='remove_fave'>Remove this movie</button> ");
+            }); // ends the get function
 
         //delete
       $('#remove_fave').on('click', 'button[data-method="delete"]', function(event){
