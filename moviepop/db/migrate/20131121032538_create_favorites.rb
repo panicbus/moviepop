@@ -6,8 +6,8 @@ class CreateFavorites < ActiveRecord::Migration
       t.string :year
       t.string :genre
       t.string :poster
-      t.float :imdbRating
-      t.integer :imdbVotes
+      t.string :imdbRating
+      t.string :imdbVotes
       t.string :director
       t.string :writer
       t.string :actors

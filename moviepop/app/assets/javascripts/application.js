@@ -6,7 +6,7 @@
     // alert("test");
 
     // 1. prevent default action of the form (prevent it from going to the search method in the controller)
-    $('#ackbarsearches').on('submit', function(event) {
+    $('#ackbarsearches').on('click', function(event) {
       event.preventDefault();
 
       // 2. capture the params of the form
@@ -27,7 +27,7 @@
       get_request.done(function(data) {
         var item = data["Search"]
         for (var i = 0; i < item.length ; i++) {
-          // console.log(item[i])
+          console.log(item[i])
           var idNumber = item[i]['imdbID']
           $("#movies_results").append("<li id=" + item[i]['imdbID'] + " class='movie'>" + item[i]["Title"] + " (" + item[i]["imdbID"] + ")</li>");
         $('li').css('cursor', 'pointer');
@@ -67,7 +67,7 @@
 
         var favorites = $.ajax({
           url: "/movies",
-          dataType: "json",
+          data: item,
           type: "POST",
         });
 
