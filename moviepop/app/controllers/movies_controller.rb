@@ -30,17 +30,10 @@ class MoviesController < ApplicationController
   end
 
   def favorite
-    movies = Favorite.all
-    current_fave_movie = []
-    current_fave_poster = []
-    movies.each do |movie|
-      if movie["user_id"] == current_user.id
-        current_fave_movie << movie["title"]
-        current_fave_poster << movie["poster"]
-      end
-    end
-    hash = { current_fave_movie: current_fave_movie, current_fave_poster: current_fave_poster}
-    render json: hash
+    #movies = current_user.favorites
+    movies = Favorite.where(user_id: current_user.id)
+    render json: movies
+
   end
 
   def destroy

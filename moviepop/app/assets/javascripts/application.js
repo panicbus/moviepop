@@ -8,23 +8,45 @@
 
         $.getJSON("/favorite").done(function(favs){
           // console.log(favs["current_fave_movie"][1])
-
-          var favMovies = favs["current_fave_movie"]
-          var favPoster = favs["current_fave_poster"]
-
-          for (var i = 0; i < favMovies.length; i++) {
-            for (var i = 0; i < favPoster.length; i++) {
-              $('#movies_results').append("<div id='favorites'>"
-                                          + favMovies[i]
+          // => favs = {[],[]}
+          // but we want => favs = {[{title:, poster: },...]}
+          console.log(favs)
+          for (var i = 0; i < favs.length; i++) {
+              $('#movies_results').append("<div id='" + favs[i]['id'] + "' class='favorites' >"
+                                          + favs[i]["title"]
                                           + "<br><img src='"
-                                          + favPoster[i]
-                                          + "'></div>");
-            }
-          }
-        }) //end of loop
+                                          + favs[i]["poster"]
+                                          + "'>"
+                                          + "<br><div id='del_button'>"
+                                          + "<button class='remove_fave' data-method='delete' data-id='"
+                                          + favs[i]['id']
+                                          + "'>Remove this movie</button>"
+                                          + "</div>"
+                                          + "</div>"
+                                         );
+            // end of loop 2
+          } // end of loop 1
+        }) //end of json func
 
-      })
 
+        //delete
+      $('#movies_results').on('click', 'button[data-method="delete"]', function(event){
+        console.log("BOOM")
+        // console.log($(this).parent())
+        var id = $(this).attr("data-id")
+        $.ajax({
+          url: "/movies/"+id,
+          method: "DELETE",
+        }).done(function(){
+
+          var item_id = "#" + id;
+          console.log(item_id);
+          $(item_id).remove();
+
+        })
+      }); //ends delete
+
+ }) // ends the see favorites on click function
 
     // 1. prevent default action of the form (prevent it from going to the search method in the controller)
     $('#ackbarsearches').on('click', function(event) {
@@ -93,34 +115,12 @@
         });
       })
 
-      $('#see_favorites').on('click', function(){
-        $('#movies_results').empty();
-            $.getJSON("/favorite").done(function(item){
-              // console.log(item["current_fave_movie"][1])
-              $('#movies_results').append(item['current_fave_movie']);
-              $('#movies_results').append(item['current_fave_poster']);
-              $('#movies_results').append("<button id='remove_fave'>Remove this movie</button> ");
-            }); // ends the get function
-
-        //delete
-      $('#remove_fave').on('click', 'button[data-method="delete"]', function(event){
-        console.log($(this).parent())
-        var id = $(this).attr("data-id")
-        $.ajax({
-          url: "/movies/"+id,
-          method: "DELETE",
-        }).done(function(data){
-          var item_id = "#"+id
-          $(item_id).remove();
-        })
-      }); //ends delete
 
       }) // ends the see favorites block
 
     }) // ends the single movie show
-  }) // ends the original api request
 
-}) // ends the main page
+}) // ends main page
 
 
 
