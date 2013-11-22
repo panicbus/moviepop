@@ -72,7 +72,7 @@
         for (var i = 0; i < item.length ; i++) {
           // console.log(item[i])
           var idNumber = item[i]['imdbID']
-          $("#movies_results").append("<li id=" + item[i]['imdbID'] + " class='movie'>" + item[i]["Title"] + " (" + item[i]["imdbID"] + ")</li>");
+          $("#movies_results").append("<li id=" + item[i]['imdbID'] + " class='movie'>" + item[i]["Title"] + "</li>");
         $('li').css('cursor', 'pointer');
         }
       });
