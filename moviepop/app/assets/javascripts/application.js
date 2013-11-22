@@ -61,7 +61,8 @@
                                     + "<br>"
                                     + "<div id='plot'>"
                                     + plot
-                                    + "</div>");
+                                    + "</div>"
+                                    + "<button id='see_favorites'>See Favorites</button><br>"  );
 
         $('#favorite').on('click', function(){
         console.log(item);
@@ -73,9 +74,19 @@
         });
 
         })
-      })
-    })
+    $('#see_favorites').on('click', function(){
+      $('#movies_results').empty();
+        $.getJSON("/favorite").done(function(item){
 
-  })
+        $('#movies_results').append("test")
+      })
+    }) // ends the see favorites block
+
+      }) // ends the single movie show
+    }) // ends the original api request
+
+  }) // ends the main page
+
+
 
 // check out codedrop for design
