@@ -7,8 +7,26 @@ class MoviesController < ApplicationController
   end
 
   def create
-    # binding.pry
-    favorites = Favorite.create
+    @movie = Movie.new
+
+    favorites = Favorite.create(
+      user_id: params[:user_id],
+      title: params[:Title],
+      year: params[:Year],
+      rated: params[:Rated],
+      released: params[:Released],
+      runtime: params[:Runtime],
+      genre: params[:Genre],
+      director: params[:Director],
+      writer: params[:Writer],
+      actors: params[:Actors],
+      plot: params[:Plot],
+      poster: params[:Poster],
+      imdbRating: params[:imdbRating],
+      imdbVotes: params[:imdbVotes],
+      imdbID: params[:imdbID],
+      response: params[:Response]
+    )
 
   end
 

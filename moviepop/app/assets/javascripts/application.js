@@ -62,8 +62,9 @@
                                     + "<div id='plot'>"
                                     + plot
                                     + "</div>");
-        console.log(item);
+
         $('#favorite').on('click', function(){
+        console.log(item);
 
         var favorites = $.ajax({
           url: "/movies",
