@@ -54,7 +54,7 @@
         var item = dataTwo
         var poster = "<img src=" + item["Poster"] + ">"
         var plot = item["Plot"]
-      $('#movies_results').append("<button id='favorite'>Favorite</button> or <button id='later'>Watch it Later</button><br>"
+      $('#movies_results').append("<button id='favorite'>Favorite</button><br>"
                                     + "<div class='poster'>"
                                     + poster
                                     + "</div>"

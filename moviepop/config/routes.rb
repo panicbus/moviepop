@@ -4,4 +4,6 @@ Moviepop::Application.routes.draw do
   resources :movies
   root to: "movies#index"
   get "search", to: "movies#search"
+
+  match 'favorite', to: 'movies#favorite'
 end

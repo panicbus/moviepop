@@ -27,7 +27,20 @@ class MoviesController < ApplicationController
       imdbID: params[:imdbID],
       response: params[:Response]
     )
+  end
 
+  def favorite
+    movies = Favorite.all
+    current_fave_movie = []
+    current_fave_poster = []
+    movies.each do |movie|
+      if movie["user_id"] == current_user.id
+        current_fave_movie << movie["title"]
+        current_fave_poster << movie["poster"]
+      end
+    end
+    hash = { current_fave_movie: current_fave_movie, current_fave_poster: current_fave_poster}
+    render json: hash
   end
 
 end
