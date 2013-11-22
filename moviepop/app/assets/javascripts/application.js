@@ -77,8 +77,11 @@
     $('#see_favorites').on('click', function(){
       $('#movies_results').empty();
         $.getJSON("/favorite").done(function(item){
-
-        $('#movies_results').append("test")
+          console.log(item[current_fave_movie])
+            for (var i=0; i<item.length; i++){
+              console.log(item[i]);
+          }
+        $('#movies_results').append(item)
       })
     }) // ends the see favorites block
 
