@@ -12,11 +12,12 @@
  *= require_tree .
  */
 
-
+body {
+  padding-top: 70px;
+}
 #container {
   margin: 20px;
 }
-
 .poster {
   margin: 20px;
 }
@@ -29,9 +30,25 @@ img {
   padding: 15px;
   text-align: center;
 }
-
-.remove_fave {
+/*.remove_fave {
   float: left;
+}*/
+
+
+#search {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 10px;
 }
-
-
+#login {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
+}
+input, button {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #CCC;
+}

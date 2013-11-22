@@ -11,22 +11,32 @@
   <div id="container">
     <div id="user_nav">
 
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.username.capitalize %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> |
-        <%= link_to "Login", new_user_session_path %>
-      <% end %>
-      <p><%= notice %><%= alert %></p>
-    </div>
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <!-- OUR FORM TO SEARCH SHIT -->
+        <div id="search">
+          <input id="search_movies" type="text" placeholder="i.e. The Matrix" class="search_bar"/>
+          <input type="Submit" id="ackbarsearches">    <button id='see_favorites'>See Favorites</button>
+          <%= notice %><%= alert %>
+        </div>
 
+        <div id="login">
+          <% if user_signed_in? %>
+            Logged in as <strong><%= current_user.username.capitalize %></strong>.
+            <%= link_to 'Edit profile', edit_user_registration_path %> |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path %> |
+            <%= link_to "Login", new_user_session_path %>
+          <% end %>
+        </div>
+      </nav>
+
+    </div>
   </div>
 </header>
 <body>
-<div id="container">
-<%= yield %>
-</div>
+  <div id="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
