@@ -43,4 +43,9 @@ class MoviesController < ApplicationController
     render json: hash
   end
 
+  def destroy
+    Favorite.delete(params[:id])
+    render nothing: true, status: 200
+  end
+
 end

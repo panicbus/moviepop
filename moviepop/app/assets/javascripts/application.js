@@ -86,20 +86,40 @@
 
         $('#favorite').on('click', function(){
         // console.log(item);
-
         var favorites = $.ajax({
           url: "/movies",
           data: item,
           type: "POST",
         });
+      })
 
+      $('#see_favorites').on('click', function(){
+        $('#movies_results').empty();
+            $.getJSON("/favorite").done(function(item){
+              // console.log(item["current_fave_movie"][1])
+              $('#movies_results').append(item['current_fave_movie']);
+              $('#movies_results').append(item['current_fave_poster']);
+            }) // ends the get function
+
+        //delete
+      $('#remove_fave').on('click', 'button[data-method="delete"]', function(event){
+        console.log($(this).parent())
+        var id = $(this).attr("data-id")
+        $.ajax({
+          url: "/movies/"+id,
+          method: "DELETE",
+        }).done(function(data){
+          var item_id = "#"+id
+          $(item_id).remove();
         })
+      }); //ends delete
 
-    }) // ends the see favorites block
+      }) // ends the see favorites block
 
-      }) // ends the single movie show
-    }) // ends the original api request
+    }) // ends the single movie show
+  }) // ends the original api request
 
+}) // ends the main page
 
 
 
