@@ -27,7 +27,7 @@
       get_request.done(function(data) {
         var item = data["Search"]
         for (var i = 0; i < item.length ; i++) {
-          console.log(item[i])
+          // console.log(item[i])
           var idNumber = item[i]['imdbID']
           $("#movies_results").append("<li id=" + item[i]['imdbID'] + " class='movie'>" + item[i]["Title"] + " (" + item[i]["imdbID"] + ")</li>");
         $('li').css('cursor', 'pointer');
@@ -54,18 +54,18 @@
         var item = dataTwo
         var poster = "<img src=" + item["Poster"] + ">"
         var plot = item["Plot"]
-      $('#movies_results').append("<button id='favorite'>Favorite</button><br>"
+      $('#movies_results').append("<button id='favorite'>Favorite</button> "
+                                    + "<button id='see_favorites'>See Favorites</button><br>"
                                     + "<div class='poster'>"
                                     + poster
                                     + "</div>"
                                     + "<br>"
                                     + "<div id='plot'>"
                                     + plot
-                                    + "</div>"
-                                    + "<button id='see_favorites'>See Favorites</button><br>"  );
+                                    + "</div>");
 
         $('#favorite').on('click', function(){
-        console.log(item);
+        // console.log(item);
 
         var favorites = $.ajax({
           url: "/movies",
@@ -75,20 +75,31 @@
 
         })
     $('#see_favorites').on('click', function(){
-      $('#movies_results').empty();
-        $.getJSON("/favorite").done(function(item){
-          console.log(item[current_fave_movie])
-            for (var i=0; i<item.length; i++){
-              console.log(item[i]);
+    $('#movies_results').empty();
+
+        $.getJSON("/favorite").done(function(favs){
+          // console.log(favs["current_fave_movie"][1])
+
+          var favMovies = favs["current_fave_movie"]
+          var favPoster = favs["current_fave_poster"]
+
+          for (var i = 0; i < favMovies.length; i++) {
+            for (var i = 0; i < favPoster.length; i++) {
+              $('#movies_results').append("<div id='favorites'>"
+                                          + favMovies[i]
+                                          + "<br><img src='"
+                                          + favPoster[i]
+                                          + "'></div>");
+            }
           }
-        $('#movies_results').append(item)
+        }) //end of loop
+
       })
     }) // ends the see favorites block
 
       }) // ends the single movie show
     }) // ends the original api request
 
-  }) // ends the main page
 
 
 

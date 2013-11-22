@@ -20,3 +20,12 @@
 .poster {
   margin: 20px;
 }
+img {
+  height: 250px;
+  width: auto;
+}
+#favorites {
+  float: left;
+  padding: 15px;
+  text-align: center;
+}
