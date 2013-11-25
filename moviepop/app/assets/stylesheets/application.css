@@ -12,8 +12,16 @@
  *= require_tree .
  */
 
+header {
+  background-color: #eeeeee
+}
+
 p {
-  font-size: 20px;
+  color: #000000;
+}
+
+a {
+  text-decoration: none;
 }
 
 li {
@@ -29,7 +37,7 @@ li:hover {
 }
 
 body {
-  padding-top: 70px;
+  padding-top: 30px;
 }
 
 #container {
@@ -59,14 +67,27 @@ img {
   text-align: center;
   margin-bottom: 10px;
   width: 300px;
+  cursor: pointer;
+}
+
+#del_button {
+  float: left;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 300px;
+  cursor: pointer;
+}
+
+#titles {
+  position: relative;
+  float: left;
 }
 
 #search {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  padding: 10px;
+ padding: 30px 0 0 40%;
 }
+
 #login {
   position: absolute;
   top: 0px;
@@ -74,10 +95,35 @@ img {
   padding: 10px;
 }
 
+hr {
+  clear: both;
+}
+
 input, button {
   padding: 5px 12px 5px 12px;
   border-radius: 5px;
   border: 1px solid #CCC;
+}
+
+button#ackbarsearches, #put_favorite {
+  height: 45px;
+  padding-top: 3px;
+  font-family: "Poiret One";
+  font-size: 22px;
+}
+
+button#see_favorites {
+  margin: 15px 0 0 30px;
+  width: 58%;
+  font-family: "Poiret One";
+  font-size: 20px;
+  letter-spacing: 8px;
+}
+
+input.search_bar {
+  width: 400px;
+  height: 45px;
+  font-size: 20px;
 }
 
 button:hover {
@@ -103,7 +149,43 @@ textarea:focus, input:focus, button:focus {
   font-weight: bold;
   letter-spacing: 10px;
 }
+
 #siteSubTitle {
   font-size: 30px;
   font-family: 'Poiret One', sans-serif;
 }
+
+.flash_success {
+  bottom: 0px;
+  font-size: 20px;
+}
+
+@media (max-width: 400px) {
+
+  .search_bar {
+    width: 380px;
+  }
+
+  #login {
+    right: 20px;
+  }
+
+  #ackbarsearches, #see_favorites {
+    margin: 15px 4px 0 4px;
+    width: 180px;
+  }
+
+  #siteTitle {
+    font-size: 50px;
+    margin-top: 30px;
+    letter-spacing: 15px;
+  }
+
+  #siteSubTitle {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+
+}
+

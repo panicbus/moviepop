@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Moviepop</title>
+  <title>MoviePop!</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,13 +11,19 @@
 
   <div id="container">
     <div id="user_nav">
-
-      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <a href="/">
+        <div id="titles">
+          <p id="siteTitle">MoviePop!</p>
+          <p id="siteSubTitle">Search For and Save Your Movies</p>
+        </div>
+      </a>
+      <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> -->
         <!-- OUR FORM TO SEARCH SHIT -->
         <div id="search">
           <input id="search_movies" type="text" placeholder="i.e. The Matrix" class="search_bar"/>
-          <button id="ackbarsearches">Search It!</button>    <button id='see_favorites'>See Favorites</button>
-          <%= notice %><%= alert %>
+          <button id="ackbarsearches">Search It!</button>   <br>
+          <button id='see_favorites'>View All Your Favorites</button>
+
         </div>
 
         <div id="login">
@@ -29,14 +35,17 @@
             <%= link_to "Sign up", new_user_registration_path %> |
             <%= link_to "Login", new_user_session_path %>
           <% end %>
+          <%= notice %><%= alert %>
         </div>
-      </nav>
+      <!-- </nav> -->
 
     </div>
   </div>
+  <hr>
 </header>
 <body>
   <div id="container">
+
     <%= yield %>
   </div>
 </body>

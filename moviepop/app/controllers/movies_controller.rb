@@ -27,9 +27,12 @@ class MoviesController < ApplicationController
       imdbID: params[:imdbID],
       response: params[:Response]
     )
-    if @movie.save
-      flash[:message] = "Movie saved to your favorites!"
+    if @movies.save
+       flash[:message] = "Movie saved to your DB"
+    else
+       flash[:message] = "Oops Something went wrong"
     end
+    # redirect_to :action => 'contact'
   end
 
   def favorite

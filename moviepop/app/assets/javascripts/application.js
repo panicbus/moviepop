@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-  $(function() {
+$(function() {
     $('#see_favorites').on('click', function(){
     $('#movies_results').empty();
 
@@ -12,26 +12,55 @@
           // but we want => favs = {[{title:, poster: },...]}
           console.log(favs)
           for (var i = 0; i < favs.length; i++) {
-              $('#movies_results').append("<div id='" + favs[i]['id'] + "' class='favorites' >"
+
+          $("<div data-method='id' data-id='" + favs[i]['imdbID'] + "' id='" + favs[i]['id'] + "' class='favorites' >"
                                           + "<br><img src='"
                                           + favs[i]["poster"]
                                           + "'>"
                                           + "<br><div id='del_button'>"
                                           + "<button class='remove_fave' data-method='delete' data-id='"
                                           + favs[i]['id']
-                                          + "'>Remove this movie</button>"
+                                          + "'>Unfavorite</button>"
                                           + "</div>"
                                           + "</div>"
-                                         );
-            // end of loop 2
-          } // end of loop 1
-        }) //end of json func
+                                         ).hide().appendTo('#movies_results').fadeIn(1000); // end of append template
+          } // end of loop
+        }) //end of getJSON func
+
+        // click Favorite to see details +++++++++++
+        $('#movies_results').on('click', 'div[data-method="id"]', function(event){
+        // $('#movies_results').empty();
+
+          var id = $(this).attr("data-id")
+          console.log(id)
+          var get_request_dataz = $.ajax({
+            url: "http://www.omdbapi.com/?i=" + id,
+            dataType: "json",
+            type: "get",
+          }); //end of AJAX request
+
+          get_request_dataz.done(function(dataz) {
+            var item = dataz
+            $('#movies_results').empty();
+          $('#movies_results').append("<div class='poster'>"
+                                        + "<img src=" + item["Poster"] + ">"
+                                        + "</div>"
+                                        + "<div class='plot'>"
+                                        + "<span class='searchedTitle'>" + item["Title"] + "</span>"
+                                        + "<p>" + item["Year"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                                        + "Rated: " + item["Rated"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                                        + item["Genre"] + "</p>"
+                                        + "<p>Director: " + item["Director"] + "</p>"
+                                        + "<p>Starring: " + item["Actors"] + "</p>"
+                                        + "<p>IMDB Rating: " + item["imdbRating"] + "</p>"
+                                        + "<p>" + item["Plot"] + "</p>"
+                                        + "</div>");
+          }); // ends dataz
 
 
         //delete
       $('#movies_results').on('click', 'button[data-method="delete"]', function(event){
-        console.log("BOOM")
-        // console.log($(this).parent())
+       event.stopPropagation();
         var id = $(this).attr("data-id")
         $.ajax({
           url: "/movies/"+id,
@@ -39,11 +68,14 @@
         }).done(function(){
 
           var item_id = "#" + id;
-          console.log(item_id);
-          $(item_id).remove();
-
+          // console.log(item_id);
+          $(item_id).fadeOut(1000, function(){
+            $(this).remove();
+          });
         })
+
       }); //ends delete
+    }); //ends ++++++++++++
 
  }) // ends the see favorites on click function
 
@@ -73,9 +105,9 @@
           var idNumber = item[i]['imdbID']
           $("#movies_results").append("<li id=" + item[i]['imdbID'] + " class='movie'>" + item[i]["Title"] + " - " + item[i]["Year"] + "</li>");
         $('li').css('cursor', 'pointer');
-        }
-      });
-    });
+        } // ends loop
+      }); // ends get_request data
+    }); // ends ackbarsearches
 
     $("#movies_results").on("click",'li.movie', function() {
       var id = $(this).attr('id');
@@ -94,47 +126,43 @@
       // 7. this is DELEGATION
       get_request_two.done(function(dataTwo) {
         var item = dataTwo
-        var poster = "<img src=" + item["Poster"] + ">"
-        var plot = item["Plot"]
-        var title = item["Title"]
-        var director = item["Director"]
-        var actors = item["Actors"]
-        var rated = item["Rated"]
-        var year = item["Year"]
-        var rating = item["imdbRating"]
-        var genre = item["Genre"]
 
       $('#movies_results').append("<div class='poster'>"
-                                    + poster
+                                    + "<img src=" + item["Poster"] + ">"
                                     + "</div>"
                                     + "<div class='plot'>"
-                                    + "<span class='searchedTitle'>" + title + "</span>"
-                                    + "<p>" + year + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-                                    + "Rated: " + rated + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-                                    + genre + "</p>"
-                                    + "<p>Director: " + director + "</p>"
-                                    + "<p>Starring: " + actors + "</p>"
-                                    + "<p>IMDB Rating: " + rating + "</p>"
-                                    + "<p>" + plot + "</p>"
-                                    + "<p><button id='favorite'>Favorite This Movie</button></p>"
+                                    + "<span class='searchedTitle'>" + item["Title"] + "</span>"
+                                    + "<p>" + item["Year"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                                    + "Rated: " + item["Rated"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                                    + item["Genre"] + "</p>"
+                                    + "<p>Director: " + item["Director"] + "</p>"
+                                    + "<p>Starring: " + item["Actors"] + "</p>"
+                                    + "<p>IMDB Rating: " + item["imdbRating"] + "</p>"
+                                    + "<p>" + item["Plot"] + "</p>"
+                                    + "<p><button id='put_favorite'>Add to Your Favorites!</button></p>"
                                     + "</div>");
 
-        $('#favorite').on('click', function(){
-        // console.log(item);
+        $('#put_favorite').on('click', function(){
+        event.stopPropagation();
+        // console.log("bang");
         var favorites = $.ajax({
           url: "/movies",
           data: item,
           type: "POST",
-        });
-      })
+          // success: showSuccessMessage
+        }); // ends this ajax
+        // >>>>>>>>
+            // console.log('boom!')
+            // $('.flash_success').
+
+        }); //ends put_favorite block
 
 
-      }) // ends the see favorites block
+      }); // ends the delegate block
 
-    }) // ends the single movie show
+    }); // ends the single movie show
 
-}) // ends main page
-
+}); // ends main page
 
 
 // check out codedrop for design
