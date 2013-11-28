@@ -13,7 +13,7 @@ $(function() {
           console.log(favs)
           for (var i = 0; i < favs.length; i++) {
 
-          $("<div data-method='id' data-id='" + favs[i]['imdbID'] + "' id='" + favs[i]['id'] + "' class='favorites' >"
+          $("<div data-method='img' data-id='" + favs[i]['imdbID'] + "' id='" + favs[i]['id'] + "' class='favorites' >"
                                           + "<br><img src='"
                                           + favs[i]["poster"]
                                           + "'>"
@@ -28,7 +28,7 @@ $(function() {
         }) //end of getJSON func
 
         // click Favorite to see details +++++++++++
-        $('#movies_results').on('click', 'div[data-method="id"]', function(event){
+        $('#movies_results').on('click', 'div[data-method="img"]', function(event){
         // $('#movies_results').empty();
 
           var id = $(this).attr("data-id")
@@ -43,7 +43,7 @@ $(function() {
             var item = dataz
             $('#movies_results').empty();
           $('#movies_results').append("<div class='poster'>"
-                                        + "<img src=" + item["Poster"] + ">"
+                                        + "<img data-method='img' src=" + item["Poster"] + ">"
                                         + "</div>"
                                         + "<div class='plot'>"
                                         + "<span class='searchedTitle'>" + item["Title"] + "</span>"
@@ -128,7 +128,7 @@ $(function() {
         var item = dataTwo
 
       $('#movies_results').append("<div class='poster'>"
-                                    + "<img src=" + item["Poster"] + ">"
+                                    + "<img data-method='img' src=" + item["Poster"] + ">"
                                     + "</div>"
                                     + "<div class='plot'>"
                                     + "<span class='searchedTitle'>" + item["Title"] + "</span>"
