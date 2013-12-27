@@ -1,0 +1,195 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+header {
+  background-color: #eeeeee
+}
+
+p {
+  color: #000000;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+  background-color: #eee;
+  border-top: 1px solid #fff;
+  padding: 8px;
+  font-size: 18px;
+}
+
+li:hover {
+  background-color: lightgray;
+}
+
+body {
+  padding-top: 30px;
+}
+
+#container {
+  margin: 20px;
+}
+/*.poster {
+  margin: 20px;
+}*/
+.poster {
+  float: left;
+}
+
+.poster, .plot {
+  padding: 10px;
+}
+
+img {
+  height: 400px;
+  width: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.favorites {
+  float: left;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 300px;
+  cursor: pointer;
+}
+
+#del_button {
+  float: left;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 300px;
+  cursor: pointer;
+}
+
+#titles {
+  position: relative;
+  float: left;
+}
+
+#search {
+ padding: 30px 0 0 40%;
+ text-align: center;
+}
+
+#login {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
+}
+
+hr {
+  clear: both;
+}
+
+input, button {
+  padding: 5px 12px 5px 12px;
+  border-radius: 5px;
+  border: 1px solid #CCC;
+}
+
+button#see_favorites, button#ackbarsearches {
+  margin: 15px;
+  font-family: "Poiret One";
+  font-size: 20px;
+  letter-spacing: 8px;
+}
+
+input.search_bar {
+  width: 400px;
+  height: 45px;
+  font-size: 20px;
+}
+
+button:hover {
+  background-color: #666;
+}
+
+button:active {
+  background-color: #999;
+}
+
+textarea:focus, input:focus, button:focus {
+    outline: 0;
+}
+
+.searchedTitle {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#siteTitle {
+  font-size: 70px;
+  font-family: 'Poiret One', sans-serif;
+  font-weight: bold;
+  letter-spacing: 10px;
+}
+
+#siteSubTitle {
+  font-size: 30px;
+  font-family: 'Poiret One', sans-serif;
+}
+
+.flash_success {
+  bottom: 0px;
+  font-size: 20px;
+}
+#splash {
+  -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 875px) {
+  div#search {
+    padding: 0;
+  }
+  input.search_bar {
+    width: 100%;
+  }
+  button#see_favorites, button#ackbarsearches {
+    float: block;
+    width: 90%;
+    font-size: 15px;
+    letter-spacing: 8px;
+  }
+  #login {
+    right: 20px;
+  }
+  #siteTitle {
+    font-size: 30px;
+    letter-spacing: 15px;
+    padding: 5px;
+  }
+  #siteSubTitle {
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+  img {
+    width: 70%;
+    height: auto;
+  }
+  div {
+    margin: 0px;
+    padding: 0px;
+  }
+}
+

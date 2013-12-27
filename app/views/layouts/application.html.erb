@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MoviePop!</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+</head>
+<header>
+
+  <div id="container">
+    <div id="user_nav">
+      <a href="/">
+        <div id="titles">
+          <p id="siteTitle">MoviePop!</p>
+          <p id="siteSubTitle">Search For and Save Your Movies</p>
+        </div>
+      </a>
+      <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> -->
+        <!-- OUR FORM TO SEARCH SHIT -->
+        <div id="search">
+          <input id="search_movies" type="text" placeholder="i.e. The Matrix" class="search_bar"/>
+          <button id="ackbarsearches">Search It!</button>   <br>
+          <button id='see_favorites'>View All Your Favorites</button>
+        </div>
+
+        <div id="login">
+          <% if user_signed_in? %>
+            Logged in as <strong><%= current_user.username.capitalize %></strong>.
+            <%= link_to 'Edit profile', edit_user_registration_path %> |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path %> |
+            <%= link_to "Login", new_user_session_path %>
+          <% end %>
+        </div>
+      <!-- </nav> -->
+    </div>
+  </div>
+  <hr>
+</header>
+<body>
+  <div id="container">
+    <%= yield %>
+   <!--  <#% if !user_signed_in? %> -->
+      <center>
+        <div id="hello">
+          <b>
+            <% flash.each do |type, messagealert| %>
+              <%= messagealert %>
+            <% end %>
+          </b>
+        </div>
+        <br><br><br>
+        <div class="splash"></div>
+      </center>
+<!--     <#% end %> -->
+  </div>
+</body>
+</html>
