@@ -70711,3 +70711,943 @@ Migrating to CreateMovies (20131120221450)
 Migrating to CreateFavorites (20131121032538)
   [1m[35m (0.1ms)[0m  select sqlite_version(*)
   [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  Rendered movies/index.html.erb within layouts/application (2.6ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 129ms (Views: 102.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (29ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (90ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /application.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /movies.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /_underscore.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /jquery.modal.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:42:27 -0800
+Served asset /application.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:42:28 -0800
+Served asset /movies.js - 304 Not Modified (5ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:42:29 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2
+Completed 200 OK in 13ms (Views: 1.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:42:30 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2014-01-06 16:42:37 -0800
+Processing by MoviesController#create as */*
+  Parameters: {"rating_count"=>"736694", "genres"=>["Action", "Adventure", "Sci-Fi"], "rated"=>"R", "language"=>["English"], "rating"=>"8.7", "country"=>["USA", "Australia"], "release_date"=>"19990331", "title"=>"The Matrix", "year"=>"1999", "filming_locations"=>"AON Tower, Kent Street, Sydney, New South Wales, Australia", "imdb_id"=>"tt0133093", "directors"=>["Andy Wachowski", "Lana Wachowski"], "writers"=>["Andy Wachowski", "Lana Wachowski"], "actors"=>["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss", "Hugo Weaving", "Gloria Foster", "Joe Pantoliano", "Marcus Chong", "Julian Arahanga", "Matt Doran", "Belinda McClory", "Anthony Ray Parker", "Paul Goddard", "Robert Taylor", "David Aston", "Marc Aden Gray"], "plot_simple"=>"A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", "poster"=>{"imdb"=>"http://ia.media-imdb.com/images/M/MV5BMjEzNjg1NTg2NV5BMl5BanBnXkFtZTYwNjY3MzQ5._V1_SY317_CR6,0,214,317_.jpg", "cover"=>"http://imdb-poster.b0.upaiyun.com/000/133/093.jpg!cover?_upt=5956efc01389098590"}, "runtime"=>["136 min"], "type"=>"M", "imdb_url"=>"http://www.imdb.com/title/tt0133093/", "also_known_as"=>["Matrix"]}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFavorite Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "favorites" WHERE ("favorites"."title" = 'The Matrix' AND "favorites"."user_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (3.1ms)[0m  INSERT INTO "favorites" ("actors", "created_at", "director", "genre", "imdbID", "imdbRating", "imdbVotes", "plot", "poster", "rated", "released", "response", "runtime", "title", "updated_at", "user_id", "writer", "year") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["actors", ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss", "Hugo Weaving", "Gloria Foster", "Joe Pantoliano", "Marcus Chong", "Julian Arahanga", "Matt Doran", "Belinda McClory", "Anthony Ray Parker", "Paul Goddard", "Robert Taylor", "David Aston", "Marc Aden Gray"]], ["created_at", Tue, 07 Jan 2014 00:42:37 UTC +00:00], ["director", ["Andy Wachowski", "Lana Wachowski"]], ["genre", ["Action", "Adventure", "Sci-Fi"]], ["imdbID", "tt0133093"], ["imdbRating", nil], ["imdbVotes", nil], ["plot", "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers."], ["poster", "http://imdb-poster.b0.upaiyun.com/000/133/093.jpg!cover?_upt=5956efc01389098590"], ["rated", "R"], ["released", nil], ["response", nil], ["runtime", ["136 min"]], ["title", "The Matrix"], ["updated_at", Tue, 07 Jan 2014 00:42:37 UTC +00:00], ["user_id", 2], ["writer", ["Andy Wachowski", "Lana Wachowski"]], ["year", "1999"]]
+  [1m[36m (52.2ms)[0m  [1mcommit transaction[0m
+  Rendered movies/create.js.erb (0.5ms)
+Completed 200 OK in 151ms (Views: 7.9ms | ActiveRecord: 55.8ms)
+
+
+Started GET "/assets/underscore-min.map" for 127.0.0.1 at 2014-01-06 16:42:39 -0800
+Served asset /underscore-min.map - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/underscore-min.map"):
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/seimithsuth/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/seimithsuth/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/seimithsuth/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/seimithsuth/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-3.2.14/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2014-01-06 16:42:51 -0800
+Processing by MoviesController#create as */*
+  Parameters: {"rating_count"=>"50021", "genres"=>["Comedy", "Family", "Sport"], "rated"=>"PG", "language"=>["English", "Spanish"], "rating"=>"5.5", "country"=>["Germany", "USA"], "release_date"=>"20060616", "title"=>"Nacho Libre", "year"=>"2006", "filming_locations"=>"Mexican Street, Backlot, Universal Studios - 100 Universal City Plaza, Universal City, California, USA", "imdb_id"=>"tt0457510", "directors"=>["Jared Hess"], "writers"=>["Jared Hess", "Jerusha Hess"], "actors"=>["Jack Black", "Ana de la Reguera", "Héctor Jiménez", "Darius Rose", "Moises Arias", "Diego Eduardo Gomez", "Carlos Maycotte", "Richard Montoya", "Cesar Gonzalez", "Rafael Montalvo", "Julio Sandoval", "Ventura 'Tigre Hispano' Lahoz", "Felipe Jesus 'Terror Chino' Hernandez", "Enrique Muñoz", "Carla Jimenez"], "plot_simple"=>"Berated all his life by those around him, a monk follows his dream and dons a mask to moonlight as a Luchador (Mexican wrestler).", "poster"=>{"imdb"=>"http://ia.media-imdb.com/images/M/MV5BMjE1OTQxNTk4NV5BMl5BanBnXkFtZTcwNDQzMjYzMQ@@._V1_SX214_.jpg", "cover"=>"http://imdb-poster.b0.upaiyun.com/000/457/510.jpg!cover?_upt=df5b35c11389098603"}, "runtime"=>["92 min"], "type"=>"VG", "imdb_url"=>"http://www.imdb.com/title/tt0457510/", "also_known_as"=>["Super Nacho"]}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFavorite Exists (0.1ms)[0m  SELECT 1 AS one FROM "favorites" WHERE ("favorites"."title" = 'Nacho Libre' AND "favorites"."user_id" = 2) LIMIT 1
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "favorites" ("actors", "created_at", "director", "genre", "imdbID", "imdbRating", "imdbVotes", "plot", "poster", "rated", "released", "response", "runtime", "title", "updated_at", "user_id", "writer", "year") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["actors", ["Jack Black", "Ana de la Reguera", "Héctor Jiménez", "Darius Rose", "Moises Arias", "Diego Eduardo Gomez", "Carlos Maycotte", "Richard Montoya", "Cesar Gonzalez", "Rafael Montalvo", "Julio Sandoval", "Ventura 'Tigre Hispano' Lahoz", "Felipe Jesus 'Terror Chino' Hernandez", "Enrique Muñoz", "Carla Jimenez"]], ["created_at", Tue, 07 Jan 2014 00:42:51 UTC +00:00], ["director", ["Jared Hess"]], ["genre", ["Comedy", "Family", "Sport"]], ["imdbID", "tt0457510"], ["imdbRating", nil], ["imdbVotes", nil], ["plot", "Berated all his life by those around him, a monk follows his dream and dons a mask to moonlight as a Luchador (Mexican wrestler)."], ["poster", "http://imdb-poster.b0.upaiyun.com/000/457/510.jpg!cover?_upt=df5b35c11389098603"], ["rated", "PG"], ["released", nil], ["response", nil], ["runtime", ["92 min"]], ["title", "Nacho Libre"], ["updated_at", Tue, 07 Jan 2014 00:42:51 UTC +00:00], ["user_id", 2], ["writer", ["Jared Hess", "Jerusha Hess"]], ["year", "2006"]]
+  [1m[35m (46.3ms)[0m  commit transaction
+  Rendered movies/create.js.erb (0.1ms)
+Completed 200 OK in 59ms (Views: 6.1ms | ActiveRecord: 48.3ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2014-01-06 16:42:51 -0800
+Processing by MoviesController#create as */*
+  Parameters: {"rating_count"=>"50021", "genres"=>["Comedy", "Family", "Sport"], "rated"=>"PG", "language"=>["English", "Spanish"], "rating"=>"5.5", "country"=>["Germany", "USA"], "release_date"=>"20060616", "title"=>"Nacho Libre", "year"=>"2006", "filming_locations"=>"Mexican Street, Backlot, Universal Studios - 100 Universal City Plaza, Universal City, California, USA", "imdb_id"=>"tt0457510", "directors"=>["Jared Hess"], "writers"=>["Jared Hess", "Jerusha Hess"], "actors"=>["Jack Black", "Ana de la Reguera", "Héctor Jiménez", "Darius Rose", "Moises Arias", "Diego Eduardo Gomez", "Carlos Maycotte", "Richard Montoya", "Cesar Gonzalez", "Rafael Montalvo", "Julio Sandoval", "Ventura 'Tigre Hispano' Lahoz", "Felipe Jesus 'Terror Chino' Hernandez", "Enrique Muñoz", "Carla Jimenez"], "plot_simple"=>"Berated all his life by those around him, a monk follows his dream and dons a mask to moonlight as a Luchador (Mexican wrestler).", "poster"=>{"imdb"=>"http://ia.media-imdb.com/images/M/MV5BMjE1OTQxNTk4NV5BMl5BanBnXkFtZTcwNDQzMjYzMQ@@._V1_SX214_.jpg", "cover"=>"http://imdb-poster.b0.upaiyun.com/000/457/510.jpg!cover?_upt=df5b35c11389098603"}, "runtime"=>["92 min"], "type"=>"VG", "imdb_url"=>"http://www.imdb.com/title/tt0457510/", "also_known_as"=>["Super Nacho"]}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFavorite Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "favorites" WHERE ("favorites"."title" = 'Nacho Libre' AND "favorites"."user_id" = 2) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered movies/create.js.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 5.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:42:53 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:43:01 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mFavorite Load (0.3ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2014-01-06 16:43:10 -0800
+Processing by MoviesController#create as */*
+  Parameters: {"rating_count"=>"56606", "genres"=>["Comedy", "Crime", "Drama", "Mystery"], "rated"=>"R", "language"=>["Spanish"], "rating"=>"7.6", "country"=>["Spain"], "release_date"=>"20070126", "title"=>"Volver", "year"=>"2006", "filming_locations"=>"Almagro, Ciudad Real, Castilla-La Mancha, Spain", "imdb_id"=>"tt0441909", "directors"=>["Pedro Almodóvar"], "writers"=>["Pedro Almodóvar"], "actors"=>["Penélope Cruz", "Carmen Maura", "Lola Dueñas", "Blanca Portillo", "Yohana Cobo", "Chus Lampreave", "Antonio de la Torre", "Carlos Blanco", "María Isabel Díaz", "Neus Sanz", "Leandro Rivera", "Pepa Aniorte", "Yolanda Ramos", "Elvira Cuadrupani", "María Alfonsa Rosso"], "plot_simple"=>"After her death, a mother returns to her home town in order to fix the situations she couldn't resolve during her life.", "poster"=>{"imdb"=>"http://ia.media-imdb.com/images/M/MV5BMjA0NTUxMjY1OV5BMl5BanBnXkFtZTcwNjI2OTMzMQ@@._V1_SY317_CR0,0,214,317_.jpg", "cover"=>"http://imdb-poster.b0.upaiyun.com/000/441/909.jpg!cover?_upt=f5dfc08c1389098622"}, "runtime"=>["121 min"], "type"=>"M", "imdb_url"=>"http://www.imdb.com/title/tt0441909/", "also_known_as"=>["To Return"]}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFavorite Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "favorites" WHERE ("favorites"."title" = 'Volver' AND "favorites"."user_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "favorites" ("actors", "created_at", "director", "genre", "imdbID", "imdbRating", "imdbVotes", "plot", "poster", "rated", "released", "response", "runtime", "title", "updated_at", "user_id", "writer", "year") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["actors", ["Penélope Cruz", "Carmen Maura", "Lola Dueñas", "Blanca Portillo", "Yohana Cobo", "Chus Lampreave", "Antonio de la Torre", "Carlos Blanco", "María Isabel Díaz", "Neus Sanz", "Leandro Rivera", "Pepa Aniorte", "Yolanda Ramos", "Elvira Cuadrupani", "María Alfonsa Rosso"]], ["created_at", Tue, 07 Jan 2014 00:43:10 UTC +00:00], ["director", ["Pedro Almodóvar"]], ["genre", ["Comedy", "Crime", "Drama", "Mystery"]], ["imdbID", "tt0441909"], ["imdbRating", nil], ["imdbVotes", nil], ["plot", "After her death, a mother returns to her home town in order to fix the situations she couldn't resolve during her life."], ["poster", "http://imdb-poster.b0.upaiyun.com/000/441/909.jpg!cover?_upt=f5dfc08c1389098622"], ["rated", "R"], ["released", nil], ["response", nil], ["runtime", ["121 min"]], ["title", "Volver"], ["updated_at", Tue, 07 Jan 2014 00:43:10 UTC +00:00], ["user_id", 2], ["writer", ["Pedro Almodóvar"]], ["year", "2006"]]
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+  Rendered movies/create.js.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 4.1ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:43:12 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mFavorite Load (0.2ms)[0m  [1mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2[0m
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:43:22 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mFavorite Load (0.2ms)[0m  [1mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2[0m
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/movies/140" for 127.0.0.1 at 2014-01-06 16:43:24 -0800
+Processing by MoviesController#destroy as */*
+  Parameters: {"id"=>"140"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSQL (53.0ms)[0m  [1mDELETE FROM "favorites" WHERE "favorites"."id" = 140[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 59ms (Views: 2.2ms | ActiveRecord: 53.3ms)
+
+
+Started DELETE "/users/logout" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SSwZqDlcSp9yHKyOnx0EK6mshLL6qVwn5+1/6dnPp9s="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 78ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  Rendered movies/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /jquery.modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /_underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:56 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" 
+  Rendered movies/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 28ms (Views: 25.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /jquery.modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /_underscore.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:57 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  Rendered movies/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 60ms (Views: 57.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /_underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /jquery.modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:44:58 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-06 16:48:14 -0800
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  Rendered movies/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 124ms (Views: 100.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /application.css - 304 Not Modified (30ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (22ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /movies.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /jquery.js - 304 Not Modified (88ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /_underscore.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /movies.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /jquery.modal.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:15 -0800
+Served asset /application.js - 304 Not Modified (27ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (1.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 92ms (Views: 73.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /_underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:17 -0800
+Served asset /jquery.modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:18 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:18 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-01-06 16:48:23 -0800
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KL9bm8oDCmqp8pVkNIJuywXfxS1pyAXdF1Zw816nPLM=", "user"=>{"username"=>"demo", "email"=>"demo@demo.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'demo@demo.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 206ms (Views: 15.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /application.css - 304 Not Modified (56ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /jquery.modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /_underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:24 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/login" for 127.0.0.1 at 2014-01-06 16:48:26 -0800
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /jquery.modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /_underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:27 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KL9bm8oDCmqp8pVkNIJuywXfxS1pyAXdF1Zw816nPLM=", "user"=>{"username"=>"demo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Go!"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'demo' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2014-01-07 00:48:31.090287', "sign_in_count" = 2, "updated_at" = '2014-01-07 00:48:31.092747' WHERE "users"."id" = 2[0m
+  [1m[35m (2.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 97ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  Rendered movies/index.html.erb within layouts/application (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /_underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /jquery.modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:31 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:48:33 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2
+Completed 200 OK in 28ms (Views: 21.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2014-01-06 16:48:40 -0800
+Processing by MoviesController#create as */*
+  Parameters: {"rating_count"=>"411700", "genres"=>["Adventure", "Comedy", "Sci-Fi"], "language"=>["English"], "rating"=>"8.5", "country"=>["USA"], "release_date"=>"19851207", "title"=>"Back to the Future", "year"=>"1985", "filming_locations"=>"Santa Clarita, California, USA", "imdb_id"=>"tt0088763", "directors"=>["Robert Zemeckis"], "writers"=>["Robert Zemeckis", "Bob Gale"], "actors"=>["Michael J. Fox", "Christopher Lloyd", "Lea Thompson", "Crispin Glover", "Thomas F. Wilson", "Claudia Wells", "Marc McClure", "Wendie Jo Sperber", "George DiCenzo", "Frances Lee McCain", "James Tolkan", "J.J. Cohen", "Casey Siemaszko", "Billy Zane", "Harry Waters Jr."], "plot_simple"=>"A teenager is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his friend, Dr. Emmett Brown, and must make sure his high-school-age parents unite in order to save his own existence.", "poster"=>{"imdb"=>"http://ia.media-imdb.com/images/M/MV5BMTk4OTQ1OTMwN15BMl5BanBnXkFtZTcwOTIwMzM3MQ@@._V1_SX214_.jpg", "cover"=>"http://imdb-poster.b0.upaiyun.com/000/088/763.jpg!cover?_upt=25f59e0a1389098953"}, "runtime"=>["116 min"], "type"=>"M", "imdb_url"=>"http://www.imdb.com/title/tt0088763/", "also_known_as"=>["Volver al futuro"]}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFavorite Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "favorites" WHERE ("favorites"."title" = 'Back to the Future' AND "favorites"."user_id" = 2) LIMIT 1[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "favorites" ("actors", "created_at", "director", "genre", "imdbID", "imdbRating", "imdbVotes", "plot", "poster", "rated", "released", "response", "runtime", "title", "updated_at", "user_id", "writer", "year") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["actors", ["Michael J. Fox", "Christopher Lloyd", "Lea Thompson", "Crispin Glover", "Thomas F. Wilson", "Claudia Wells", "Marc McClure", "Wendie Jo Sperber", "George DiCenzo", "Frances Lee McCain", "James Tolkan", "J.J. Cohen", "Casey Siemaszko", "Billy Zane", "Harry Waters Jr."]], ["created_at", Tue, 07 Jan 2014 00:48:40 UTC +00:00], ["director", ["Robert Zemeckis"]], ["genre", ["Adventure", "Comedy", "Sci-Fi"]], ["imdbID", "tt0088763"], ["imdbRating", nil], ["imdbVotes", nil], ["plot", "A teenager is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his friend, Dr. Emmett Brown, and must make sure his high-school-age parents unite in order to save his own existence."], ["poster", "http://imdb-poster.b0.upaiyun.com/000/088/763.jpg!cover?_upt=25f59e0a1389098953"], ["rated", nil], ["released", nil], ["response", nil], ["runtime", ["116 min"]], ["title", "Back to the Future"], ["updated_at", Tue, 07 Jan 2014 00:48:40 UTC +00:00], ["user_id", 2], ["writer", ["Robert Zemeckis", "Bob Gale"]], ["year", "1985"]]
+  [1m[36m (55.7ms)[0m  [1mcommit transaction[0m
+  Rendered movies/create.js.erb (0.5ms)
+Completed 200 OK in 75ms (Views: 8.0ms | ActiveRecord: 57.9ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:48:42 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mFavorite Load (0.2ms)[0m  [1mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2[0m
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" 
+  Rendered movies/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /_underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /jquery.modal.js - 304 Not Modified (54ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:48:44 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:49:14 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mFavorite Load (0.2ms)[0m  [1mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2[0m
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:49:15 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mFavorite Load (0.3ms)[0m  [1mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2[0m
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" 
+  Rendered movies/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 48ms (Views: 30.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (90ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /_underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /jquery.modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:12 -0800
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:52:14 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mFavorite Load (0.2ms)[0m  [1mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2[0m
+Completed 200 OK in 35ms (Views: 22.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2014-01-06 16:52:26 -0800
+Processing by MoviesController#create as */*
+  Parameters: {"rating_count"=>"229770", "genres"=>["Drama"], "rated"=>"R", "language"=>["English", "Japanese", "German", "French"], "rating"=>"7.8", "country"=>["USA", "Japan"], "release_date"=>"20040107", "title"=>"Lost in Translation", "year"=>"2003", "filming_locations"=>"Heian Shrine, Kyoto, Japan", "imdb_id"=>"tt0335266", "directors"=>["Sofia Coppola"], "writers"=>["Sofia Coppola"], "actors"=>["Scarlett Johansson", "Bill Murray", "Akiko Takeshita", "Kazuyoshi Minamimagoe", "Kazuko Shibata", "Take", "Ryuichiro Baba", "Akira Yamaguchi", "Catherine Lambert", "François du Bois", "Tim Leffman", "Gregory Pekar", "Richard Allen", "Giovanni Ribisi", "Daiamondo Yukai"], "plot_simple"=>"A faded movie star and a neglected young wife form an unlikely bond after crossing paths in Tokyo.", "poster"=>{"imdb"=>"http://ia.media-imdb.com/images/M/MV5BMTI2NDI5ODk4N15BMl5BanBnXkFtZTYwMTI3NTE3._V1_SX214_.jpg", "cover"=>"http://imdb-poster.b0.upaiyun.com/000/335/266.jpg!cover?_upt=bca3cf281389099178"}, "runtime"=>["101 min"], "type"=>"M", "imdb_url"=>"http://www.imdb.com/title/tt0335266/", "also_known_as"=>["Perdidos en Tokio"]}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mFavorite Exists (0.2ms)[0m  SELECT 1 AS one FROM "favorites" WHERE ("favorites"."title" = 'Lost in Translation' AND "favorites"."user_id" = 2) LIMIT 1
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "favorites" ("actors", "created_at", "director", "genre", "imdbID", "imdbRating", "imdbVotes", "plot", "poster", "rated", "released", "response", "runtime", "title", "updated_at", "user_id", "writer", "year") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["actors", ["Scarlett Johansson", "Bill Murray", "Akiko Takeshita", "Kazuyoshi Minamimagoe", "Kazuko Shibata", "Take", "Ryuichiro Baba", "Akira Yamaguchi", "Catherine Lambert", "François du Bois", "Tim Leffman", "Gregory Pekar", "Richard Allen", "Giovanni Ribisi", "Daiamondo Yukai"]], ["created_at", Tue, 07 Jan 2014 00:52:26 UTC +00:00], ["director", ["Sofia Coppola"]], ["genre", ["Drama"]], ["imdbID", "tt0335266"], ["imdbRating", nil], ["imdbVotes", nil], ["plot", "A faded movie star and a neglected young wife form an unlikely bond after crossing paths in Tokyo."], ["poster", "http://imdb-poster.b0.upaiyun.com/000/335/266.jpg!cover?_upt=bca3cf281389099178"], ["rated", "R"], ["released", nil], ["response", nil], ["runtime", ["101 min"]], ["title", "Lost in Translation"], ["updated_at", Tue, 07 Jan 2014 00:52:26 UTC +00:00], ["user_id", 2], ["writer", ["Sofia Coppola"]], ["year", "2003"]]
+  [1m[35m (47.4ms)[0m  commit transaction
+  Rendered movies/create.js.erb (0.1ms)
+Completed 200 OK in 64ms (Views: 5.9ms | ActiveRecord: 49.9ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:52:28 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-06 16:52:44 -0800
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  Rendered movies/index.html.erb within layouts/application (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:44 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:44 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:44 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:44 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:44 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:44 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:44 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.modal.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:45 -0800
+Served asset /jquery.modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:45 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:45 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/_underscore.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:45 -0800
+Served asset /_underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-06 16:52:45 -0800
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-06 16:52:45 -0800
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-01-06 16:52:45 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 2
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.4ms)
