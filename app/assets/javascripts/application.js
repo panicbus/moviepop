@@ -139,12 +139,12 @@ $(function() {
         $('#put_favorite').on('click', function(){
         event.stopPropagation();
         var favorites = $.ajax({
-          url: "/movies",
+          url: "/index",
           data: item,
           type: "POST",
           // success: showSuccessMessage
         }); //ends ajax
-
+        $('#put_favorite').fadeOut('fast');
         }); //ends put_favorite block
 
       }); // ends the delegate block
@@ -152,3 +152,15 @@ $(function() {
     }); // ends the single movie show
 
 }); // ends main page
+// This hides the splash image when a visitor and/or user searches a movie or checks out their favorites
+$(document).ready(function(){
+  $('.splash').append('<img src="/assets/img.png" id="splash">');
+  $('#ackbarsearches').on('click', function(){
+    $('.splash').hide();
+    $('#hello').hide();
+  })
+  $('#see_favorites').on('click', function(){
+    $('.splash').hide();
+    $('#hello').hide();
+  })
+})
