@@ -23,6 +23,7 @@
           <input id="search_movies" type="text" placeholder="i.e. The Matrix" class="search_bar"/>
           <button id="ackbarsearches">Search It!</button>   <br>
           <button id='see_favorites'>View All Your Favorites</button>
+
         </div>
 
         <div id="login">
@@ -34,28 +35,18 @@
             <%= link_to "Sign up", new_user_registration_path %> |
             <%= link_to "Login", new_user_session_path %>
           <% end %>
+          <%= notice %><%= alert %>
         </div>
       <!-- </nav> -->
+
     </div>
   </div>
   <hr>
 </header>
 <body>
   <div id="container">
+
     <%= yield %>
-   <!--  <#% if !user_signed_in? %> -->
-      <center>
-        <div id="hello">
-          <b>
-            <% flash.each do |type, messagealert| %>
-              <%= messagealert %>
-            <% end %>
-          </b>
-        </div>
-        <br><br><br>
-        <div class="splash"></div>
-      </center>
-<!--     <#% end %> -->
   </div>
 </body>
 </html>
