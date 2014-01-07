@@ -70703,3 +70703,11 @@ Served asset /_underscore.js - 304 Not Modified (0ms)
 
 Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-01-06 16:27:08 -0800
 Served asset /movies.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20131120191556)
+Migrating to AddUsernameToUsers (20131120193953)
+Migrating to CreateMovies (20131120221450)
+Migrating to CreateFavorites (20131121032538)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
