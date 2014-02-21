@@ -7,25 +7,31 @@ class MoviesController < ApplicationController
   end
 
   def create
-    # binding.pry
     userId = current_user.id
     @movie = Movie.new
     favorites = Favorite.create(
       user_id: userId,
-      title: params[:title],
-      year: params[:year],
-      rated: params[:rated],
-      runtime: params[:runtime],
-      genre: params[:genres],
-      director: params[:directors],
-      writer: params[:writers],
-      actors: params[:actors],
-      plot: params[:plot_simple],
-      poster: params[:poster][:cover],
-      # rating: params[:rating],
-      imdbID: params[:imdb_id],
+      title: params[:Title],
+      year: params[:Year],
+      rated: params[:Rated],
+      released: params[:Released],
+      runtime: params[:Runtime],
+      genre: params[:Genre],
+      director: params[:Director],
+      writer: params[:Writer],
+      actors: params[:Actors],
+      plot: params[:Plot],
+      poster: params[:Poster],
+      imdbRating: params[:imdbRating],
+      imdbVotes: params[:imdbVotes],
+      imdbID: params[:imdbID],
+      response: params[:Response]
     )
-
+    if @movies.save
+       flash[:message] = "Movie saved to your DB"
+    else
+       flash[:message] = "Oops Something went wrong"
+    end
     # redirect_to :action => 'contact'
   end
 

@@ -60,5 +60,17 @@ module Moviepop
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
+
+    # AFTER I INSTALL THE RACK CORS GEM I ADD THIS.
+    # This will allow from any origins on any resource of your application, methods :get, :post and :options.
+    # //////////////////
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+    # //////////////////
+
   end
 end
