@@ -43,9 +43,10 @@ $(document).ready(function() {
                                       + "</div>");
         // 7. AJAX REQUEST TO LET USERS SAVE THIS INFO TO THEIR 'FAVORITES'
         // WE INCLUDE THIS BECAUSE WE APPENED A "ADD TO FAVS" BUTTON ABOVE
-        $('#put_favorite').on('click', function(event){
+        $('#put_favorite').on('click', function(){
           event.stopPropagation();
-          $.ajax({
+          // console.log("bang");
+          var favorites = $.ajax({
             url: "/index",
             data: dataTwo,
             type: "POST",

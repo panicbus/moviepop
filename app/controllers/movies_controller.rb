@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
 
   def create
     userId = current_user.id
-    @movie = Movie.new
+    @movie = Movie.create
     favorites = Favorite.create(
       user_id: userId,
       title: params[:Title],
@@ -27,11 +27,6 @@ class MoviesController < ApplicationController
       imdbID: params[:imdbID],
       response: params[:Response]
     )
-    if @movies.save
-       flash[:message] = "Movie saved to your DB"
-    else
-       flash[:message] = "Oops Something went wrong"
-    end
     # redirect_to :action => 'contact'
   end
 
