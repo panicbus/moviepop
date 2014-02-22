@@ -10,16 +10,21 @@ $(document).ready(function() {
     // 4. GETJSON FROM OUR CREATED JSON
     // JSON WAS CREATED VIA RUBY IN 'movies_controller' - 'favorites' METHOD
     $.getJSON("/favorite").done(function(favs){
-      for (var i = 0; i < favs.length; i++) {
-        var imdbId = favs[i]['imdbID'];
-        var id = favs[i]['id'];
-        var posterImg = favs[i]["poster"];
-        $("<div data-method='img' data-id='" + imdbId + "' id='" + id + "' class='favorites' >"
-                                      + "<br><img src='"+ posterImg +"'>" + "<br><div id='del_button'>"
-                                      + "<button class='remove_fave' data-method='delete' data-id='"+ id+ "'>Unfavorite</button>"
-                                      + "</div>"
-                                     ).hide().appendTo('#movies_results').fadeIn(1000); // end of append template
-      } // end of loop
+      if (favs.length > 0) {
+        $('#see_favorites').hide().css({"background": "#CCC"}).html("View All Your Favorites").fadeIn('slow');
+        for (var i = 0; i < favs.length; i++) {
+          var imdbId = favs[i]['imdbID'];
+          var id = favs[i]['id'];
+          var posterImg = favs[i]["poster"];
+          $("<div data-method='img' data-id='" + imdbId + "' id='" + id + "' class='favorites' >"
+                                        + "<br><img src='"+ posterImg +"'>" + "<br><div id='del_button'>"
+                                        + "<button class='remove_fave' data-method='delete' data-id='"+ id+ "'>Unfavorite</button>"
+                                        + "</div>"
+                                       ).hide().appendTo('#movies_results').fadeIn(1000); // end of append template
+        } // end of loop
+      } else {
+        $('#see_favorites').hide().css({"background": "orange"}).html("No Movies In Your Favorites!").fadeIn('slow');
+      };
     }) //end of getJSON
 
     // 5. ALLOW USERS TO SEE MORE INFO BY CLICKING ON MOVIES IN THEIR FAVS LIST
@@ -55,22 +60,22 @@ $(document).ready(function() {
         }
       }); //end of AJAX request
 
-      //delete
+      // 6. ALLOW USERS TO REMOVE MOVIES FROM THEIR FAVORITES
       $('#movies_results').on('click', 'button[data-method="delete"]', function(event){
        event.stopPropagation();
         var id = $(this).attr("data-id")
         $.ajax({
           url: "/movies/"+id,
           method: "DELETE",
-        }).done(function(){
-          var item_id = "#" + id;
-          // console.log(item_id);
-          $(item_id).fadeOut(1000, function(){
-            $(this).remove();
-          });
+          success: function(){
+            var item_id = "#" + id;
+            $(item_id).fadeOut('fast', function(){
+              $(this).remove();
+            });
+          }
         })
+      }); //end of event handler for delete action
 
-      }); //ends delete
-    }); //ends ++++++++++++
-  })
- }) // ends the see favorites on click function
+    }); //ends of click event for user to see more info of movies saved in their favs list
+  }) // end of click event to see user's favs
+ }) // end of the document.ready
