@@ -61,7 +61,7 @@ $(document).ready(function() {
       }); //end of AJAX request
 
       // 6. ALLOW USERS TO REMOVE MOVIES FROM THEIR FAVORITES
-      $('#movies_results').on('click', 'button[data-method="delete"]', function(event){
+      $('#movies_results').on('click', '#del_button', function(event){
        event.stopPropagation();
         var id = $(this).attr("data-id")
         $.ajax({

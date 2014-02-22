@@ -46916,3 +46916,196 @@ Processing by MoviesController#destroy as */*
   [1m[35mSQL (54.6ms)[0m  DELETE FROM "favorites" WHERE "favorites"."id" = 24
   Rendered text template (0.0ms)
 Completed 200 OK in 57ms (Views: 0.4ms | ActiveRecord: 55.3ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-02-21 16:54:55 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-02-21 16:54:56 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mFavorite Load (0.1ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/index" for 127.0.0.1 at 2014-02-21 16:55:05 -0800
+Processing by MoviesController#create as */*
+  Parameters: {"Title"=>"Johnny Test", "Year"=>"2005–", "Rated"=>"TV-Y7", "Released"=>"17 Sep 2005", "Runtime"=>"30 min", "Genre"=>"Animation, Comedy, Sci-Fi", "Director"=>"N/A", "Writer"=>"Scott Fellows", "Actors"=>"James Arnold Taylor, Maryke Hendrikse, Lee Tockar, Ashleigh Ball", "Plot"=>"The adventures of average suburban boy Johnny Test, who wittingly plays test subject for his genius twin sisters' various experiments, reluctantly fighting evil villains in the process.", "Language"=>"English", "Country"=>"USA, Canada", "Awards"=>"1 win & 3 nominations.", "Poster"=>"http://ia.media-imdb.com/images/M/MV5BMTk5NjMyMTc5NF5BMl5BanBnXkFtZTcwNTI5ODAwMw@@._V1_SX300.jpg", "Metascore"=>"N/A", "imdbRating"=>"5.0", "imdbVotes"=>"1,632", "imdbID"=>"tt0454349", "Type"=>"series", "Response"=>"True"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("created_at", "search", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Sat, 22 Feb 2014 00:55:05 UTC +00:00], ["search", nil], ["updated_at", Sat, 22 Feb 2014 00:55:05 UTC +00:00]]
+  [1m[35m (44.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFavorite Exists (0.2ms)[0m  SELECT 1 AS one FROM "favorites" WHERE ("favorites"."title" = 'Johnny Test' AND "favorites"."user_id" = 1) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "favorites" ("actors", "created_at", "director", "genre", "imdbID", "imdbRating", "imdbVotes", "plot", "poster", "rated", "released", "response", "runtime", "title", "updated_at", "user_id", "writer", "year") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["actors", "James Arnold Taylor, Maryke Hendrikse, Lee Tockar, Ashleigh Ball"], ["created_at", Sat, 22 Feb 2014 00:55:05 UTC +00:00], ["director", "N/A"], ["genre", "Animation, Comedy, Sci-Fi"], ["imdbID", "tt0454349"], ["imdbRating", "5.0"], ["imdbVotes", "1,632"], ["plot", "The adventures of average suburban boy Johnny Test, who wittingly plays test subject for his genius twin sisters' various experiments, reluctantly fighting evil villains in the process."], ["poster", "http://ia.media-imdb.com/images/M/MV5BMTk5NjMyMTc5NF5BMl5BanBnXkFtZTcwNTI5ODAwMw@@._V1_SX300.jpg"], ["rated", "TV-Y7"], ["released", "17 Sep 2005"], ["response", "True"], ["runtime", "30 min"], ["title", "Johnny Test"], ["updated_at", Sat, 22 Feb 2014 00:55:05 UTC +00:00], ["user_id", 1], ["writer", "Scott Fellows"], ["year", "2005–"]]
+  [1m[35m (2.1ms)[0m  commit transaction
+  Rendered movies/create.js.erb (0.0ms)
+Completed 200 OK in 57ms (Views: 3.9ms | ActiveRecord: 47.9ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-02-21 16:55:06 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mFavorite Load (0.1ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  Rendered movies/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 13ms (Views: 9.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/04view_and_delete_favs.js?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /04view_and_delete_favs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/03moreinfo.js?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /03moreinfo.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/02search.js?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /02search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/01splashimg.js?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /01splashimg.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/img.png" for 127.0.0.1 at 2014-02-21 16:55:10 -0800
+Served asset /img.png - 304 Not Modified (0ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-02-21 16:55:30 -0800
+Processing by MoviesController#favorite as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
+Completed 200 OK in 62ms (Views: 2.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-02-21 16:55:34 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mFavorite Load (0.3ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-02-21 16:55:38 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mFavorite Load (0.7ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/movies/25" for 127.0.0.1 at 2014-02-21 16:55:40 -0800
+Processing by MoviesController#destroy as */*
+  Parameters: {"id"=>"25"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (52.4ms)[0m  DELETE FROM "favorites" WHERE "favorites"."id" = 25
+  Rendered text template (0.0ms)
+Completed 200 OK in 55ms (Views: 0.5ms | ActiveRecord: 52.6ms)
+
+
+Started POST "/index" for 127.0.0.1 at 2014-02-21 16:56:58 -0800
+Processing by MoviesController#create as */*
+  Parameters: {"Title"=>"The Matrix", "Year"=>"1999", "Rated"=>"R", "Released"=>"31 Mar 1999", "Runtime"=>"136 min", "Genre"=>"Action, Adventure, Sci-Fi", "Director"=>"Andy Wachowski, Lana Wachowski", "Writer"=>"Andy Wachowski, Lana Wachowski", "Actors"=>"Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving", "Plot"=>"A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", "Language"=>"English", "Country"=>"USA, Australia", "Awards"=>"Won 4 Oscars. Another 29 wins & 36 nominations.", "Poster"=>"http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX300.jpg", "Metascore"=>"73", "imdbRating"=>"8.7", "imdbVotes"=>"824,103", "imdbID"=>"tt0133093", "Type"=>"movie", "Response"=>"True"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("created_at", "search", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Sat, 22 Feb 2014 00:56:58 UTC +00:00], ["search", nil], ["updated_at", Sat, 22 Feb 2014 00:56:58 UTC +00:00]]
+  [1m[35m (53.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFavorite Exists (0.2ms)[0m  SELECT 1 AS one FROM "favorites" WHERE ("favorites"."title" = 'The Matrix' AND "favorites"."user_id" = 1) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "favorites" ("actors", "created_at", "director", "genre", "imdbID", "imdbRating", "imdbVotes", "plot", "poster", "rated", "released", "response", "runtime", "title", "updated_at", "user_id", "writer", "year") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["actors", "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving"], ["created_at", Sat, 22 Feb 2014 00:56:58 UTC +00:00], ["director", "Andy Wachowski, Lana Wachowski"], ["genre", "Action, Adventure, Sci-Fi"], ["imdbID", "tt0133093"], ["imdbRating", "8.7"], ["imdbVotes", "824,103"], ["plot", "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers."], ["poster", "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX300.jpg"], ["rated", "R"], ["released", "31 Mar 1999"], ["response", "True"], ["runtime", "136 min"], ["title", "The Matrix"], ["updated_at", Sat, 22 Feb 2014 00:56:58 UTC +00:00], ["user_id", 1], ["writer", "Andy Wachowski, Lana Wachowski"], ["year", "1999"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+  Rendered movies/create.js.erb (0.1ms)
+Completed 200 OK in 67ms (Views: 4.3ms | ActiveRecord: 57.1ms)
+
+
+Started POST "/index" for 127.0.0.1 at 2014-02-21 16:57:11 -0800
+Processing by MoviesController#create as */*
+  Parameters: {"Title"=>"Super Size Me", "Year"=>"2004", "Rated"=>"PG", "Released"=>"21 May 2004", "Runtime"=>"100 min", "Genre"=>"Documentary, Comedy, Drama", "Director"=>"Morgan Spurlock", "Writer"=>"Morgan Spurlock", "Actors"=>"Morgan Spurlock, Daryl Isaacs, Lisa Ganjhu, Stephen Siegel", "Plot"=>"While examining the influence of the fast food industry, Morgan Spurlock personally explores the consequences on his health of a diet of solely McDonald's food for one month.", "Language"=>"English", "Country"=>"USA", "Awards"=>"Nominated for 1 Oscar. Another 7 wins & 6 nominations.", "Poster"=>"http://ia.media-imdb.com/images/M/MV5BMTYyOTk4MjIxOF5BMl5BanBnXkFtZTcwMzk1NTUyMQ@@._V1_SX300.jpg", "Metascore"=>"73", "imdbRating"=>"7.4", "imdbVotes"=>"65,303", "imdbID"=>"tt0390521", "Type"=>"movie", "Response"=>"True"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("created_at", "search", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Sat, 22 Feb 2014 00:57:11 UTC +00:00], ["search", nil], ["updated_at", Sat, 22 Feb 2014 00:57:11 UTC +00:00]]
+  [1m[35m (53.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFavorite Exists (0.2ms)[0m  SELECT 1 AS one FROM "favorites" WHERE ("favorites"."title" = 'Super Size Me' AND "favorites"."user_id" = 1) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "favorites" ("actors", "created_at", "director", "genre", "imdbID", "imdbRating", "imdbVotes", "plot", "poster", "rated", "released", "response", "runtime", "title", "updated_at", "user_id", "writer", "year") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["actors", "Morgan Spurlock, Daryl Isaacs, Lisa Ganjhu, Stephen Siegel"], ["created_at", Sat, 22 Feb 2014 00:57:11 UTC +00:00], ["director", "Morgan Spurlock"], ["genre", "Documentary, Comedy, Drama"], ["imdbID", "tt0390521"], ["imdbRating", "7.4"], ["imdbVotes", "65,303"], ["plot", "While examining the influence of the fast food industry, Morgan Spurlock personally explores the consequences on his health of a diet of solely McDonald's food for one month."], ["poster", "http://ia.media-imdb.com/images/M/MV5BMTYyOTk4MjIxOF5BMl5BanBnXkFtZTcwMzk1NTUyMQ@@._V1_SX300.jpg"], ["rated", "PG"], ["released", "21 May 2004"], ["response", "True"], ["runtime", "100 min"], ["title", "Super Size Me"], ["updated_at", Sat, 22 Feb 2014 00:57:11 UTC +00:00], ["user_id", 1], ["writer", "Morgan Spurlock"], ["year", "2004"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+  Rendered movies/create.js.erb (0.0ms)
+Completed 200 OK in 68ms (Views: 5.0ms | ActiveRecord: 57.9ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-02-21 16:57:12 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mFavorite Load (0.3ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/movies/26" for 127.0.0.1 at 2014-02-21 16:57:17 -0800
+Processing by MoviesController#destroy as */*
+  Parameters: {"id"=>"26"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (44.2ms)[0m  DELETE FROM "favorites" WHERE "favorites"."id" = 26
+  Rendered text template (0.0ms)
+Completed 200 OK in 46ms (Views: 0.4ms | ActiveRecord: 44.4ms)
+
+
+Started DELETE "/movies/27" for 127.0.0.1 at 2014-02-21 16:57:18 -0800
+Processing by MoviesController#destroy as */*
+  Parameters: {"id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (2.4ms)[0m  DELETE FROM "favorites" WHERE "favorites"."id" = 27
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 2.6ms)
