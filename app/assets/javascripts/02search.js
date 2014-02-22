@@ -22,7 +22,7 @@ $(document).ready(function() {
           var idNumber = item[i]['imdbID'];
           var title = item[i]["Title"];
           var year = item[i]["Year"];
-          $("#movies_results").append("<li id="+idNumber+" class='movie'>"+title+" ("+year+")</li>");
+          $("#movies_results").append("<li id="+idNumber+" class='movie'>"+title+" ("+year+")</li>").hide().fadeIn('fast');
         } // end of for loop
       } // end of success
     }) // end of ajax request
