@@ -10,7 +10,7 @@ $(document).ready(function() {
             $('#see_favorites').hide().css({"background": "#CCC"}).html("View All Your Favorites").fadeIn('slow');
             for (var i = 0; i < favs.length; i++) {
             $("<div id='" + favs[i]['id'] + "' class='favorites' >"
-                        + "<br><div data-method='zed' data-id='" + favs[i]['imdbID'] + "' class='what'><img src='" + favs[i]["poster"] + "'></div>"
+                        + "<br><div data-index='"+i+"' data-method='zed' data-id='" + favs[i]['imdbID'] + "' class='what'><img src='" + favs[i]["poster"] + "'></div>"
                         + "<div id='del_button' data-id='" + favs[i]['id'] + "'>"
                         + "<button class='remove_fave' data-method='delete'>Unfavorite</button>"
                         + "</div>"
@@ -38,28 +38,28 @@ $(document).ready(function() {
 
     // click movie poster in faves to see details +++++++++++
     $('#movies_results').on('click', 'div[data-method="zed"]', function(){
-      $('#movies_results').empty();
-      var movieId = $(this).data('id');
-      var obj = $(this)
+      var movieIndex = $(this).data('index');
       $.getJSON("/favorite").done(function(favs){
-          console.log(movieId);
-          console.log(favs);
-          $("<div>PUT STUFF HERE!!</div>").hide().appendTo('#movies_results').fadeIn(500)
-          // $("<div class='poster'>"
-          //     + "<img data-method='img' src=" + favs["Poster"] + ">"
-          //     + "</div>"
-          //     + "<div class='plot'>"
-          //     + "<span class='searchedTitle'>" + favs["Title"] + "</span>"
-          //     + "<p>" + favs["Year"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-          //     + "Rated: " + favs["Rated"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-          //     + favs["Genre"] + "</p>"
-          //     + "<p>Director: " + favs["Director"] + "</p>"
-          //     + "<p>Starring: " + favs["Actors"] + "</p>"
-          //     + "<p>IMDB Rating: " + favs["imdbRating"] + "</p>"
-          //     + "<p>" + favs["Plot"] + "</p>"
-          //     + "</div>"
-          //            ).hide().appendTo('#movies_results').fadeIn(1000); // end of append template
-
+          // console.log("Index: "+movieIndex);
+          // console.log(favs[movieIndex]["title"]);
+          // console.log("Corresponding Hash:");
+          // console.log(favs[movieIndex]);
+          $('#movies_results').empty();
+          // $("<div>PUT STUFF HERE!!</div>").hide().appendTo('#movies_results').fadeIn(500)
+          $("<div class='poster'>"
+              + "<img data-method='img' src=" + favs[movieIndex]["poster"] + ">"
+              + "</div>"
+              + "<div class='plot'>"
+              + "<span class='searchedTitle'>" + favs[movieIndex]["title"] + "</span>"
+              + "<p>" + favs[movieIndex]["year"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+              + "Rated: " + favs[movieIndex]["rated"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+              + favs[movieIndex]["genre"] + "</p>"
+              + "<p>Director: " + favs[movieIndex]["director"] + "</p>"
+              + "<p>Starring: " + favs[movieIndex]["actors"] + "</p>"
+              + "<p>IMDB Rating: " + favs[movieIndex]["imdbRating"] + "</p>"
+              + "<p>" + favs[movieIndex]["plot"] + "</p>"
+              + "</div>"
+          ).hide().appendTo('#movies_results').fadeIn(1000); // end of append template
       }) //end of getJSON func
     })
   }) // end of see_favorite onclick event handler
