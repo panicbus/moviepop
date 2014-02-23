@@ -38,7 +38,6 @@
       <!-- </nav> -->
     </div>
   </div>
-  <hr>
 </header>
 <body>
   <div id="container">
@@ -46,13 +45,12 @@
    <!--  <#% if !user_signed_in? %> -->
       <center>
         <div id="hello">
-          <b>
+          <b><br>
             <% flash.each do |type, messagealert| %>
               <%= messagealert %>
             <% end %>
-          </b>
+          </b><br>
         </div>
-        <br><br><br>
         <div class="splash"></div>
       </center>
 <!--     <#% end %> -->
