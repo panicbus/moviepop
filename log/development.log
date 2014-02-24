@@ -77394,3 +77394,166 @@ Processing by MoviesController#favorite as JSON
   [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
   [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
 Completed 200 OK in 150ms (Views: 59.3ms | ActiveRecord: 0.9ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-24 09:36:56 -0800
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  Rendered movies/index.html.erb within layouts/application (2.1ms)
+Compiled 04viewdeletefavs.js  (0ms)  (pid 4471)
+Compiled application.js  (11ms)  (pid 4471)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 332ms (Views: 249.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /movies.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /application.css - 304 Not Modified (28ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/02search.js?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /02search.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/01splashimg.js?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /01splashimg.js - 304 Not Modified (73ms)
+
+
+Started GET "/assets/03moreinfoaddfavs.js?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /03moreinfoaddfavs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/04viewdeletefavs.js?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /04viewdeletefavs.js - 200 OK (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /movies.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/img.png" for 127.0.0.1 at 2014-02-24 09:36:57 -0800
+Served asset /img.png - 304 Not Modified (12ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-02-24 09:36:59 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
+Completed 200 OK in 120ms (Views: 28.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (1.0ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  Rendered movies/index.html.erb within layouts/application (0.1ms)
+Compiled 04viewdeletefavs.js  (0ms)  (pid 4471)
+Compiled application.js  (8ms)  (pid 4471)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 118ms (Views: 112.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/dist/css/bootstrap.css?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /dist/css/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/%20jquery.modal.css?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /%20jquery.modal.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /dist/css/bootstrap-theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/dist/css/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /dist/css/bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dist/css/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /dist/css/bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /movies.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/02search.js?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /02search.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/03moreinfoaddfavs.js?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /03moreinfoaddfavs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/01splashimg.js?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /01splashimg.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/04viewdeletefavs.js?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /04viewdeletefavs.js - 200 OK (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/img.png" for 127.0.0.1 at 2014-02-24 09:37:26 -0800
+Served asset /img.png - 304 Not Modified (0ms)
+
+
+Started GET "/favorite" for 127.0.0.1 at 2014-02-24 09:37:27 -0800
+Processing by MoviesController#favorite as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mFavorite Load (0.2ms)[0m  SELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 1.3ms)
