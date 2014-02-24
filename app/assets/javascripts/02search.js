@@ -13,7 +13,8 @@ $(document).ready(function() {
       url: "http://www.omdbapi.com/",
       data: { s: $('#search_movies').val() },
       dataType: "json",
-      type: "get",
+      type: "GET",
+      method: "GET",
       // 5. AFTER A SUCCESSFUL AJAX REQUEST, APPEND THE INFO
       success: function(data) {
         $('#ackbarsearches').hide().fadeIn('slow');

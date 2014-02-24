@@ -28,25 +28,22 @@ $(document).ready(function() {
         var imbdRating = dataTwo["imdbRating"];
         var plot = dataTwo["Plot"];
         $('#movies_results').append("<div class='poster'>"
-                                      + "<img data-method='img' src=" + posterImg + ">"
-                                      + "</div>"
-                                      + "<div class='plot'>"
-                                      + "<span class='searchedTitle'>" + title + "</span>"
-                                      + "<p>" + year + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-                                      + "Rated: " + rating + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-                                      + genre + "</p>"
-                                      + "<p>Director: " + director + "</p>"
-                                      + "<p>Starring: " + actors + "</p>"
-                                      + "<p>IMDB Rating: " + imbdRating + "</p>"
-                                      + "<p>" + plot + "</p>"
-                                      + "<p><button id='put_favorite'>Add to Your Favorites!</button></p>"
-                                      + "</div>").hide().fadeIn('fast');
+            + "<img data-method='img' src=" + posterImg + "></div>"
+            + "<div class='plot'><span class='searchedTitle'>" + title + "</span>"
+            + "<p>" + year + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+            + "Rated: " + rating + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+            + genre + "</p>"
+            + "<p>Director: " + director + "</p>"
+            + "<p>Starring: " + actors + "</p>"
+            + "<p>IMDB Rating: " + imbdRating + "</p>"
+            + "<p>" + plot + "</p>"
+            + "<p><button id='put_favorite'>Add to Your Favorites!</button></p>"
+            + "</div>").hide().fadeIn('fast');
         // 7. AJAX REQUEST TO LET USERS SAVE THIS INFO TO THEIR 'FAVORITES'
         // WE INCLUDE THIS BECAUSE WE APPENED A "ADD TO FAVS" BUTTON ABOVE
         $('#put_favorite').on('click', function(){
           event.stopPropagation();
-          // console.log("bang");
-          var favorites = $.ajax({
+          $.ajax({
             url: "/index",
             data: dataTwo,
             type: "POST",
@@ -58,11 +55,10 @@ $(document).ready(function() {
             }
           }); // end of ajax request
         }); // end of put_favorite onclick event handler
-
       } // end of success
     }); // end of ajax request
 
-  // 8. CLEAR OUT THE INFO OF PREVIOUSLY EXPANDED MOVIES
+    // 8. CLEAR OUT THE INFO OF PREVIOUSLY EXPANDED MOVIES
     $('#movies_results').empty();
   }); // end of the movies_results onclick/search event handler
 }); // end of document.ready
