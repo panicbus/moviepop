@@ -17,7 +17,7 @@ $(document).ready(function() {
       // 5. AFTER A SUCCESSFUL AJAX REQUEST, APPEND THE INFO
       success: function(data) {
         $('#ackbarsearches').hide().fadeIn('slow');
-        $('#see_favorites').css({"background": "#CCC"}).html("View All Your Favorites");
+        $('#see_favorites').css({"background": "lightblue"}).html("View All Your Favorites");
         // 6. PARSE THRU THE JSON
         var item = data["Search"];
         for (var i = 0; i < item.length ; i++) {

@@ -51,10 +51,10 @@ $(document).ready(function() {
             data: dataTwo,
             type: "POST",
             success: function() {
-              $('#put_favorite').css('background', 'lightgreen').html('Movie Saved!').fadeOut('slow');
+              $('#put_favorite').css('background', '#e67e22').html('Movie Saved!').fadeOut('fast');
             },
             error: function() {
-              $('#put_favorite').css('background', 'orange').html('Sign in to Save!').click(function(){document.location.href='users/login';});
+              $('#put_favorite').css('background', '##e67e22').html('Sign in to Save!').click(function(){document.location.href='users/login';});
             }
           }); // end of ajax request
         }); // end of put_favorite onclick event handler

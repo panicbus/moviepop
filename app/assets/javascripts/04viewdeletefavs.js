@@ -10,7 +10,7 @@ $(document).ready(function() {
       // 4. getJSON/AJAX REQUEST TO GRAB USER'S FAVORITES IN OUR DATABASE, NOT QUERYING THE API
         $.getJSON("/favorite").done(function(favs){
           if (favs.length > 0) {
-            $('#see_favorites').hide().css({"background": "#CCC"}).html("View All Your Favorites").fadeIn('slow');
+            $('#see_favorites').hide().css({"background": "lighblue"}).html("View All Your Favorites").fadeIn('slow');
             for (var i = 0; i < favs.length; i++) {
             $("<div id='" + favs[i]['id'] + "' class='favorites' >"
                         + "<br><div data-index='"+i+"' data-method='zed' data-id='" + favs[i]['imdbID'] + "' class='what'><img src='" + favs[i]["poster"] + "'></div>"
