@@ -25,20 +25,25 @@ $(document).ready(function() {
         var year = dataTwo['year'];
         var rating = dataTwo['mpaa_rating'];
         var criticScore = dataTwo['ratings']['critics_score'];
+        var audScore = dataTwo.ratings.audience_score;
+        var runtime = dataTwo['runtime'];
         var plot = dataTwo['critics_consensus'];
         $('#movies_results').append("<div class='poster'>"
             + "<img data-method='img' src=" + poster + "></div>"
             + "<div class='plot'><span class='searchedTitle'>" + title + "</span>"
             + "<p>" + year + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-            + "Rated: " + rating + "</p>"
-            + "<p>IMDB Rating: " + criticScore + "</p>"
+            + "Rated: " + rating + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+            + "Theater Release"+"</p>"
+            + "<p>Critic Score: " + criticScore + "/100 &nbsp;&nbsp;|&nbsp;&nbsp;"
+            + "Audience Score: " + audScore + "/100 &nbsp;&nbsp;|&nbsp;&nbsp;"
+            + "Runtime: " + runtime + " mins</p>"
             + "<p>" + plot + "</p>"
-            + "<p><button id='put_favorite'>Add to Your Favorites!</button></p>"
+            + "<p><br><button id='put_favorite'>Add to Your Favorites!</button></p>"
             + "</div>").hide().fadeIn('fast');
         // 7. AJAX REQUEST TO LET USERS SAVE THIS INFO TO THEIR 'FAVORITES'
         // WE INCLUDE THIS BECAUSE WE APPENED A "ADD TO FAVS" BUTTON ABOVE
         $('#put_favorite').on('click', function(){
-          debugger
+          // debugger
           $.ajax({
             url: "/index",
             data: dataTwo,

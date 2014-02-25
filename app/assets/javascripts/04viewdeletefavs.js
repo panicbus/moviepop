@@ -7,20 +7,6 @@ $(document).ready(function() {
       // 3. CLEAR OUT THE DIV WITH THE EXISTING LIST OF FAVORITE MOVIES
       $('#movies_results').empty();
 
-      // TESTING ROTTEN TOMATOES API TO GET IMAGE
-      // $.ajax({
-      //   url: 'http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=nr9twk2r8vfgq5hkm6je8vmh&q=Toy+Story+3',
-      //   content: 'application/jsonp',
-      //   dataType: "jsonp",
-      //   success: function(data) {
-      //     alert("Yay");
-      //   },
-      //   error: function() {
-      //     alert('No');
-      //   }
-      // })
-      // TESTING ROTTEN TOMATOES API TO GET IMAGE
-
       // 4. getJSON/AJAX REQUEST TO GRAB USER'S FAVORITES IN OUR DATABASE, NOT QUERYING THE API
         $.getJSON("/favorite").done(function(favs){
           if (favs.length > 0) {
@@ -28,8 +14,8 @@ $(document).ready(function() {
             for (var i = 0; i < favs.length; i++) {
             $("<div id='" + favs[i]['id'] + "' class='favorites' >"
                         + "<br><div data-index='"+i+"' data-method='zed' data-id='" + favs[i]['imdbID'] + "' class='what'><img src='" + favs[i]["poster"] + "'></div>"
-                        + "<div id='del_button' data-id='" + favs[i]['id'] + "'>"
-                        + "<button class='remove_fave' data-method='delete'>Unfavorite</button>"
+                        + "<div id='del_button' data-id='" + favs[i]['id'] + "'>&nbsp;&nbsp;&times;"
+                        // + "<button class='remove_fave' data-method='delete'>Unfavorite</button>"
                         + "</div>"
                         + "</div>"
                        ).hide().appendTo('#movies_results').fadeIn(1000); // end of append template

@@ -18,7 +18,9 @@ header {
 }
 
 p {
-  color: #000000;
+  color: #333;
+  font-size: 28px;
+  padding-left: 75px;
 }
 
 a {
@@ -28,56 +30,69 @@ a {
 li {
   list-style-type: none;
   background-color: #ffe7ce;
-  border-top: 1px solid #fff;
-  padding: 8px;
-  font-size: 18px;
+  border-top: 30px solid lightyellow;
+  padding: 10px;
+  font-size: 33px;
 }
 
 li:hover {
   background-color: #f39c12;
 }
 
-body {
-  padding-top: 30px;
+#container {
+  margin: 50px;
 }
 
-#container {
-  margin: 20px;
-}
-/*.poster {
-  margin: 20px;
-}*/
 .poster {
   float: left;
 }
 
-.poster, .plot {
-  padding: 10px;
+.poster img {
+  width: 300px;
+  height: 425px;
+  margin-left: 100px;
+  margin-right: 20px;
 }
 
-img {
+.what img{
   height: 400px;
   width: auto;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  opacity:0.75;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.poster img{
+  height: 400px;
+  width: auto;
+  opacity:1.0;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+img:hover {
+  opacity:1.0;
+  filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
 .favorites {
+  margin: 25px;
+  padding: 0px;
   float: left;
-  padding: 15px;
   text-align: center;
-  margin-bottom: 10px;
-  width: 300px;
   cursor: pointer;
 }
 
 #del_button {
+  text-align: left;
+  font-size: 20px;
+  color: lightyellow;
+  background-color: #000;
   float: left;
-  padding: 15px;
-  text-align: center;
-  margin-bottom: 10px;
-  width: 300px;
   cursor: pointer;
+  width: 100%;
 }
 
 #titles {
@@ -86,48 +101,46 @@ img {
 }
 
 #search {
- padding: 30px 0 0 40%;
+ padding: 5px 0 0 40%;
  text-align: center;
 }
 
 #login {
   position: absolute;
   top: 0px;
-  right: 0px;
+  left: 0px;
   padding: 10px;
+  font-size: 20px;
+  width: 100%;
+  text-align: right;
 }
 
-hr {
-  clear: both;
-}
-
-input, button {
-  padding: 7px 12px 7px 12px;
-  border-radius: 5px;
+button, button#see_favorites, button#ackbarsearches {
+  margin: 10px;
+  padding: 15px;
+  font-family: "Poiret One";
+  font-size: 20px;
+  letter-spacing: 8px;
+  border-radius: 15px;
   border: 0px solid #CCC;
   background: lightblue;
 }
 
-button#see_favorites, button#ackbarsearches {
-  margin: 15px;
-  font-family: "Poiret One";
-  font-size: 20px;
-  letter-spacing: 8px;
-}
-
 input.search_bar {
   width: 400px;
-  height: 45px;
-  font-size: 20px;
+  margin: 0px;
+  padding: 8px;
+  font-family: "Poiret One";
+  font-size: 30px;
+  letter-spacing: 8px;
+  border-radius: 15px;
+  border: 0px solid #CCC;
   background: #FFF;
 }
 
-/*button:active {
-  background-color: #999;
-}*/
-
 textarea:focus, input:focus, button:focus {
     outline: 0;
+    background: lightyellow;
 }
 
 .searchedTitle {
@@ -157,7 +170,10 @@ textarea:focus, input:focus, button:focus {
   height: auto;
 }
 
-@media (max-width: 875px) {
+@media (max-width: 1275px) {
+  header {
+    padding: 5px;
+  }
   div#search {
     padding: 0;
   }
@@ -166,21 +182,17 @@ textarea:focus, input:focus, button:focus {
   }
   button#see_favorites, button#ackbarsearches {
     float: block;
-    width: 90%;
-    font-size: 15px;
+    width: 100%;
+    font-size: 30px;
     letter-spacing: 8px;
   }
-  #login {
-    right: 20px;
-  }
   #siteTitle {
-    font-size: 30px;
+    font-size: 50px;
     letter-spacing: 15px;
     padding: 5px;
   }
-  #siteSubTitle {
-    font-size: 15px;
-    letter-spacing: 2px;
+  #siteSubTitle, #splash {
+    display:none;
   }
   img {
     width: 70%;
@@ -189,6 +201,7 @@ textarea:focus, input:focus, button:focus {
   div {
     margin: 0px;
     padding: 0px;
+    display: block;
   }
 }
 
