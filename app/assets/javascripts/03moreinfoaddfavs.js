@@ -13,7 +13,6 @@ $(document).ready(function() {
     $.ajax({
       url: "http://api.rottentomatoes.com/api/public/v1.0/movies/"+movieid+".json?apikey=nr9twk2r8vfgq5hkm6je8vmh",
       // data: { q: $(this).attr('id') },
-      movieid: $(this).attr('id'),
       content: 'application/jsonp',
       dataType: "jsonp",
       type: "get",
@@ -40,10 +39,9 @@ $(document).ready(function() {
         // WE INCLUDE THIS BECAUSE WE APPENED A "ADD TO FAVS" BUTTON ABOVE
         $('#put_favorite').on('click', function(){
           debugger
-          event.stopPropagation();
           $.ajax({
             url: "/index",
-            data: dataTwo['movies'][0],
+            data: dataTwo,
             type: "POST",
             success: function(element) {
               $('#put_favorite').css('background', '#e67e22').html('Movie Saved!').fadeOut('fast');

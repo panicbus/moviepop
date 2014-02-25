@@ -11,11 +11,11 @@ class MoviesController < ApplicationController
     @movie = Movie.create
     favorites = Favorite.create(
       user_id: userId,
-      title: params[:title],
-      year: params[:year],
+      title: params['title'],
+      year: params['year'],
       rated: params['mpaa_rating'],
       released: params['release_dates']['theater'],
-      runtime: params[:runtime],
+      runtime: params['runtime'],
       genre: params[:Genre],
       director: params[:Director],
       writer: params[:Writer],
