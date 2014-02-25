@@ -9,22 +9,9 @@ $(document).ready(function() {
 
       // TESTING ROTTEN TOMATOES API TO GET IMAGE
       // $.ajax({
-      //   url: 'http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=[mykey]&q=Toy+Story+3',
-      //   dataType: "json",
-      //   xhrFields: {
-      //     // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
-      //     // This can be used to set the 'withCredentials' property.
-      //     // Set the value to 'true' if you'd like to pass cookies to the server.
-      //     // If this is enabled, your server must respond with the header
-      //     // 'Access-Control-Allow-Credentials: true'.
-      //     withCredentials: 'true'
-      //   },
-      //   headers: {
-      //     // Set any custom headers here.
-      //     // If you set any non-simple headers, your server must include these
-      //     // headers in the 'Access-Control-Allow-Headers' response header.
-      //   },
-      //   type: "get",
+      //   url: 'http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=nr9twk2r8vfgq5hkm6je8vmh&q=Toy+Story+3',
+      //   content: 'application/jsonp',
+      //   dataType: "jsonp",
       //   success: function(data) {
       //     alert("Yay");
       //   },
