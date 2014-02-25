@@ -10,31 +10,26 @@ $(document).ready(function() {
     // 4. AJAX REQUEST TO SEARCH FOR LIST OF MOVIES
     // GRAB THE ID FOR THE DATA
     $.ajax({
-      url: "http://www.omdbapi.com/",
-      data: { i: $(this).attr('id') },
-      dataType: "json",
+      url: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=nr9twk2r8vfgq5hkm6je8vmh",
+      data: { q: $(this).attr('id') },
+      content: 'application/jsonp',
+      dataType: "jsonp",
       type: "get",
       // 5. AFTER A SUCCESSFUL AJAX REQUEST, APPEND THE INFO
       // ALSO ALLOW USERS TO SAVE THIS INFO TO THEIR 'FAVORITES'
       success: function(dataTwo) {
         // 6. PARSE THRU THE JSON
-        var posterImg = dataTwo["Poster"];
-        var title = dataTwo["Title"];
-        var year = dataTwo["Year"];
-        var rating = dataTwo["Year"];
-        var genre = dataTwo["Genre"];
-        var director = dataTwo["Director"];
-        var actors = dataTwo["Actors"];
-        var imbdRating = dataTwo["imdbRating"];
-        var plot = dataTwo["Plot"];
+        var posterImg = dataTwo['movies'][0]['posters']['original'];
+        var title = dataTwo['movies'][0]['title'];
+        var year = dataTwo['movies'][0]['year'];
+        var rating = dataTwo['movies'][0]['mpaa_rating'];
+        var imbdRating = dataTwo['movies'][0]['ratings']['critics_score'];
+        var plot = dataTwo['movies'][0]['critics_consensus'];
         $('#movies_results').append("<div class='poster'>"
             + "<img data-method='img' src=" + posterImg + "></div>"
             + "<div class='plot'><span class='searchedTitle'>" + title + "</span>"
             + "<p>" + year + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-            + "Rated: " + rating + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-            + genre + "</p>"
-            + "<p>Director: " + director + "</p>"
-            + "<p>Starring: " + actors + "</p>"
+            + "Rated: " + rating + "</p>"
             + "<p>IMDB Rating: " + imbdRating + "</p>"
             + "<p>" + plot + "</p>"
             + "<p><button id='put_favorite'>Add to Your Favorites!</button></p>"
@@ -55,7 +50,10 @@ $(document).ready(function() {
             }
           }); // end of ajax request
         }); // end of put_favorite onclick event handler
-      } // end of success
+      }, // end of success
+      error: function() {
+        alert("Error");
+      }
     }); // end of ajax request
 
     // 8. CLEAR OUT THE INFO OF PREVIOUSLY EXPANDED MOVIES

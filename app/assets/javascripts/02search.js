@@ -17,17 +17,17 @@ $(document).ready(function() {
       type: "GET",
       // 5. AFTER A SUCCESSFUL AJAX REQUEST, APPEND THE INFO
       success: function(data) {
-        // debugger
         $('#ackbarsearches').hide().fadeIn('slow');
         $('#see_favorites').css({"background": "lightblue"}).html("View All Your Favorites");
         // 6. PARSE THRU THE JSON
 
         var item = data['movies'];
         for (var i = 0; i < item.length ; i++) {
-          var idNumber = "tt"+ item[i]['alternate_ids']['imdb'];
+          // var idNumber = "tt"+ item[i]['alternate_ids']['imdb'];
+          var idNumber = item[i]['alternate_ids']['imdb'];
           var title = item[i]['title'];
           var year = item[i]["year"];
-          $("#movies_results").append("<li id="+idNumber+" class='movie'>"+title+" ("+year+")</li>").hide().fadeIn('fast').css('cursor', 'pointer');
+          $("#movies_results").append("<li id="+title+" class='movie'>"+title+" ("+year+")</li>").hide().fadeIn('fast').css('cursor', 'pointer');
         } // end of for loop
       }, // end of success
       error: function() {
