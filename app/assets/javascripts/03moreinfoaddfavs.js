@@ -18,46 +18,38 @@ $(document).ready(function() {
       // 5. AFTER A SUCCESSFUL AJAX REQUEST, APPEND THE INFO
       // ALSO ALLOW USERS TO SAVE THIS INFO TO THEIR 'FAVORITES'
       success: function(dataTwo) {
-        console.log(dataTwo);
+        // console.log(dataTwo);
+        // debugger
         // 6. PARSE THRU THE JSON
-        // var posterImg = dataTwo["Poster"];
-        // var title = dataTwo["Title"];
-        // var year = dataTwo["Year"];
-        // var rating = dataTwo["Year"];
-        var genre = "na";
-        var director = "na";
-        var actors = "na";
-        var imdbID = "na";
-        var imdbVotes = "na";
-        // var imbdRating = dataTwo["imdbRating"];
-        // var plot = dataTwo["Plot"];
-
-        var poster = dataTwo['movies'][0]['posters']['original'];
-        var title = dataTwo['movies'][0]['title'];
-        var year = dataTwo['movies'][0]['year'];
-        var rating = dataTwo['movies'][0]['mpaa_rating'];
-        var imbdRating = dataTwo['movies'][0]['ratings']['critics_score'];
-        var plot = dataTwo['movies'][0]['critics_consensus'];
-        $('#movies_results').append("<div class='poster'>"
-            + "<img data-method='img' src=" + poster + "></div>"
-            + "<div class='plot'><span class='searchedTitle'>" + title + "</span>"
-            + "<p>" + year + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-            + "Rated: " + rating + "</p>"
-            + "<p>IMDB Rating: " + imbdRating + "</p>"
-            + "<p>" + plot + "</p>"
-            + "<p><button id='put_favorite'>Add to Your Favorites!</button></p>"
-            + "</div>").hide().fadeIn('fast');
+        for (var i in dataTwo["movies"]) {
+          console.log(i+": "+dataTwo["movies"][i]['title']);
+          // debugger
+          var poster = dataTwo['movies'][i]['posters']['original'];
+          var title = dataTwo['movies'][i]['title'];
+          var year = dataTwo['movies'][i]['year'];
+          var rating = dataTwo['movies'][i]['mpaa_rating'];
+          var criticScore = dataTwo['movies'][i]['ratings']['critics_score'];
+          var plot = dataTwo['movies'][i]['critics_consensus'];
+          $('#movies_results').append("<div class='poster'>"
+              + "<img data-method='img' src=" + poster + "></div>"
+              + "<div class='plot'><span class='searchedTitle'>" + title + "</span>"
+              + "<p>" + year + "&nbsp;&nbsp;|&nbsp;&nbsp;"
+              + "Rated: " + rating + "</p>"
+              + "<p>IMDB Rating: " + criticScore + "</p>"
+              + "<p>" + plot + "</p>"
+              + "<p><button id='put_favorite'>Add to Your Favorites!</button></p>"
+              + "</div>").hide().fadeIn('fast');
+        }
         // 7. AJAX REQUEST TO LET USERS SAVE THIS INFO TO THEIR 'FAVORITES'
         // WE INCLUDE THIS BECAUSE WE APPENED A "ADD TO FAVS" BUTTON ABOVE
         $('#put_favorite').on('click', function(){
-          event.stopPropagation();
           debugger
+          event.stopPropagation();
           $.ajax({
             url: "/index",
             data: dataTwo['movies'][0],
             type: "POST",
             success: function(element) {
-              alert("success");
               $('#put_favorite').css('background', '#e67e22').html('Movie Saved!').fadeOut('fast');
             },
             error: function() {

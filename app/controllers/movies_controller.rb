@@ -19,11 +19,11 @@ class MoviesController < ApplicationController
       genre: params[:Genre],
       director: params[:Director],
       writer: params[:Writer],
-      actors: params[:Actors],
+      actors: params[:actors],
       plot: params['critics_consensus'],
       poster: params['posters']['original'],
-      imdbRating: params[:rating],
-      imdbVotes: params[:imdbVotes],
+      imdbRating: params['ratings']['critics_score'],
+      imdbVotes: params['ratings']['audience_score'],
       imdbID: params['alternate_ids']['imdb'],
       response: params[:Response]
     )

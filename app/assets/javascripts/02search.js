@@ -20,15 +20,19 @@ $(document).ready(function() {
         $('#ackbarsearches').hide().fadeIn('slow');
         $('#see_favorites').css({"background": "lightblue"}).html("View All Your Favorites");
         // 6. PARSE THRU THE JSON
-
-        var item = data['movies'];
-        for (var i = 0; i < item.length ; i++) {
-          // var idNumber = "tt"+ item[i]['alternate_ids']['imdb'];
-          var idNumber = item[i]['alternate_ids']['imdb'];
-          var title = item[i]['title'];
-          var year = item[i]["year"];
-          $("#movies_results").append("<li id="+title+" class='movie'>"+title+" ("+year+")</li>").hide().fadeIn('fast').css('cursor', 'pointer');
-        } // end of for loop
+        // debugger
+        for (var i in data.movies) {
+          console.log(data.movies[i].title)
+          $("#movies_results").append("<li id="+data.movies[i].title+" class='movie'>"+data.movies[i].title+" ("+data.movies[i].year+")</li>").hide().fadeIn('fast').css('cursor', 'pointer');
+        } // end of loop
+        // var item = data['movies'];
+        // for (var i = 0; i < item.length ; i++) {
+        //   var idNumber = "tt"+ item[i]['alternate_ids']['imdb'];
+        //   var idNumber = item[i]['alternate_ids']['imdb'];
+        //   var title = item[i]['title'];
+        //   var year = item[i]["year"];
+        //   $("#movies_results").append("<li id="+title+" class='movie'>"+title+" ("+year+")</li>").hide().fadeIn('fast').css('cursor', 'pointer');
+        // } // end of for loop
       }, // end of success
       error: function() {
         alert("Error");

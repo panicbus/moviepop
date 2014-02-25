@@ -60,10 +60,6 @@ $(document).ready(function() {
     $('#movies_results').on('click', 'div[data-method="zed"]', function(){
       var movieIndex = $(this).data('index');
       $.getJSON("/favorite").done(function(favs){
-          // console.log("Index: "+movieIndex);
-          // console.log(favs[movieIndex]["title"]);
-          // console.log("Corresponding Hash:");
-          // console.log(favs[movieIndex]);
           $('#movies_results').empty();
           $("<div class='poster'>"
               + "<img data-method='img' src=" + favs[movieIndex]["poster"] + ">"
@@ -72,10 +68,10 @@ $(document).ready(function() {
               + "<span class='searchedTitle'>" + favs[movieIndex]["title"] + "</span>"
               + "<p>" + favs[movieIndex]["year"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
               + "Rated: " + favs[movieIndex]["rated"] + "&nbsp;&nbsp;|&nbsp;&nbsp;"
-              + favs[movieIndex]["genre"] + "</p>"
-              + "<p>Director: " + favs[movieIndex]["director"] + "</p>"
-              + "<p>Starring: " + favs[movieIndex]["actors"] + "</p>"
-              + "<p>IMDB Rating: " + favs[movieIndex]["imdbRating"] + "</p>"
+              + "Theater Release: " + favs[movieIndex]["released"] + "</p>"
+              + "<p>Critic Score: " + favs[movieIndex]["imdbRating"] + "/100 &nbsp;&nbsp;|&nbsp;&nbsp;"
+              + "Audience Score: " + favs[movieIndex]["imdbVotes"] + "/100 &nbsp;&nbsp;|&nbsp;&nbsp;"
+              + "Runtime: " + favs[movieIndex]["runtime"] + " mins</p>"
               + "<p>" + favs[movieIndex]["plot"] + "</p>"
               + "</div>"
           ).hide().appendTo('#movies_results').fadeIn(1000); // end of append template
