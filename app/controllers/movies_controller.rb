@@ -11,20 +11,20 @@ class MoviesController < ApplicationController
     @movie = Movie.create
     favorites = Favorite.create(
       user_id: userId,
-      title: params[:Title],
-      year: params[:Year],
-      rated: params[:Rated],
-      released: params[:Released],
-      runtime: params[:Runtime],
+      title: params[:title],
+      year: params[:year],
+      rated: params['mpaa_rating'],
+      released: params['release_dates']['theater'],
+      runtime: params[:runtime],
       genre: params[:Genre],
       director: params[:Director],
       writer: params[:Writer],
       actors: params[:Actors],
-      plot: params[:Plot],
-      poster: params[:Poster],
-      imdbRating: params[:imdbRating],
+      plot: params['critics_consensus'],
+      poster: params['posters']['original'],
+      imdbRating: params[:rating],
       imdbVotes: params[:imdbVotes],
-      imdbID: params[:imdbID],
+      imdbID: params['alternate_ids']['imdb'],
       response: params[:Response]
     )
     # redirect_to :action => 'contact'

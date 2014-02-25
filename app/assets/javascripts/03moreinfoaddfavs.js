@@ -18,15 +18,28 @@ $(document).ready(function() {
       // 5. AFTER A SUCCESSFUL AJAX REQUEST, APPEND THE INFO
       // ALSO ALLOW USERS TO SAVE THIS INFO TO THEIR 'FAVORITES'
       success: function(dataTwo) {
+        console.log(dataTwo);
         // 6. PARSE THRU THE JSON
-        var posterImg = dataTwo['movies'][0]['posters']['original'];
+        // var posterImg = dataTwo["Poster"];
+        // var title = dataTwo["Title"];
+        // var year = dataTwo["Year"];
+        // var rating = dataTwo["Year"];
+        var genre = "na";
+        var director = "na";
+        var actors = "na";
+        var imdbID = "na";
+        var imdbVotes = "na";
+        // var imbdRating = dataTwo["imdbRating"];
+        // var plot = dataTwo["Plot"];
+
+        var poster = dataTwo['movies'][0]['posters']['original'];
         var title = dataTwo['movies'][0]['title'];
         var year = dataTwo['movies'][0]['year'];
         var rating = dataTwo['movies'][0]['mpaa_rating'];
         var imbdRating = dataTwo['movies'][0]['ratings']['critics_score'];
         var plot = dataTwo['movies'][0]['critics_consensus'];
         $('#movies_results').append("<div class='poster'>"
-            + "<img data-method='img' src=" + posterImg + "></div>"
+            + "<img data-method='img' src=" + poster + "></div>"
             + "<div class='plot'><span class='searchedTitle'>" + title + "</span>"
             + "<p>" + year + "&nbsp;&nbsp;|&nbsp;&nbsp;"
             + "Rated: " + rating + "</p>"
@@ -38,14 +51,17 @@ $(document).ready(function() {
         // WE INCLUDE THIS BECAUSE WE APPENED A "ADD TO FAVS" BUTTON ABOVE
         $('#put_favorite').on('click', function(){
           event.stopPropagation();
+          debugger
           $.ajax({
             url: "/index",
-            data: dataTwo,
+            data: dataTwo['movies'][0],
             type: "POST",
-            success: function() {
+            success: function(element) {
+              alert("success");
               $('#put_favorite').css('background', '#e67e22').html('Movie Saved!').fadeOut('fast');
             },
             error: function() {
+              alert("error");
               $('#put_favorite').css('background', '##e67e22').html('Sign in to Save!').click(function(){document.location.href='users/login';});
             }
           }); // end of ajax request
